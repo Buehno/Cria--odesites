@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brasa & Sal · Cozinha de Fogo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--char:#17130f;--char2:#211b15;--ember:#e2622c;--ember-d:#c24a1c;--olive:#93a05a;--cream:#f4ece0;--muted:#a99a86;--wine:#7a2436;--line:rgba(226,98,44,.2)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Spectral',serif;background:var(--char);color:var(--cream);line-height:1.7}
+h1,h2,h3,.cond{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1px;font-weight:600;line-height:1.05}
+a{text-decoration:none;color:inherit}img{display:block;max-width:100%}
+.wrap{max-width:1160px;margin:0 auto;padding:0 26px}
+.ember{color:var(--ember)}
+.btn{display:inline-block;font-family:'Oswald';text-transform:uppercase;letter-spacing:2px;font-size:14px;padding:14px 30px;cursor:pointer;transition:.25s;border:2px solid transparent}
+.btn-e{background:var(--ember);color:#17130f;font-weight:600}.btn-e:hover{background:var(--cream)}
+.btn-o{border-color:var(--cream);color:var(--cream)}.btn-o:hover{border-color:var(--ember);color:var(--ember)}
+.ribbon{position:fixed;left:0;top:0;z-index:99;background:var(--ember);color:#17130f;font-family:'Oswald';font-size:11px;letter-spacing:2px;padding:6px 14px}
+.back{position:fixed;right:16px;bottom:16px;z-index:99}
+.nav{position:sticky;top:0;z-index:50;background:rgba(23,19,15,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-family:'Oswald';font-weight:700;font-size:24px;letter-spacing:3px}
+.logo span{color:var(--ember)}
+.nav-links{display:flex;gap:28px;font-family:'Oswald';font-size:14px;letter-spacing:1px;text-transform:uppercase}
+.nav-links a:hover{color:var(--ember)}
+/* hero */
+.hero{position:relative;min-height:82vh;display:flex;align-items:center;background:linear-gradient(rgba(23,19,15,.62),rgba(23,19,15,.86)),url('https://placehold.co/1400x900/2a1c12/e2622c?text=') center/cover;overflow:hidden}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 60%,rgba(226,98,44,.22),transparent 55%)}
+.hero .wrap{position:relative;z-index:2}
+.kicker{font-family:'Oswald';letter-spacing:5px;text-transform:uppercase;color:var(--ember);font-size:14px;margin-bottom:20px}
+.hero h1{font-size:clamp(46px,8vw,92px);font-weight:700}
+.hero p{font-family:'Spectral';font-style:italic;font-size:20px;color:var(--cream);max-width:520px;margin:20px 0 32px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hours{margin-top:34px;font-family:'Oswald';letter-spacing:1px;font-size:13px;color:var(--muted);text-transform:uppercase}
+/* faixa */
+.marq{background:var(--ember);color:#17130f;font-family:'Oswald';letter-spacing:3px;text-transform:uppercase;font-size:13px;padding:12px 0;overflow:hidden;white-space:nowrap}
+.marq span{margin:0 22px}
+section{padding:90px 0}
+.head{margin-bottom:50px}
+.head .kicker{margin-bottom:12px}
+.head h2{font-size:clamp(32px,5vw,52px)}
+/* apresentacao */
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.about img{border:1px solid var(--line)}
+.about .figs{display:flex;gap:34px;margin-top:26px}
+.about .figs b{font-family:'Oswald';font-size:38px;color:var(--ember);display:block;line-height:1}
+.about .figs small{font-family:'Oswald';text-transform:uppercase;letter-spacing:1px;font-size:12px;color:var(--muted)}
+/* cardapio */
+.menu{background:var(--char2)}
+.menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px 60px}
+.dish{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px dotted rgba(169,154,134,.3)}
+.dish h3{font-family:'Oswald';font-size:19px;font-weight:500}
+.dish .desc{font-style:italic;color:var(--muted);font-size:15px;margin-top:3px}
+.dish .pr{font-family:'Oswald';color:var(--ember);font-size:19px;white-space:nowrap}
+.tab-title{font-family:'Oswald';color:var(--olive);letter-spacing:3px;text-transform:uppercase;font-size:15px;margin:30px 0 6px;border-bottom:2px solid var(--olive);padding-bottom:8px}
+/* reserva */
+.res .wrap{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.form{background:var(--char2);border:1px solid var(--line);padding:36px}
+.form label{font-family:'Oswald';text-transform:uppercase;letter-spacing:1px;font-size:12px;color:var(--ember);display:block;margin:16px 0 6px}
+.form input,.form select{width:100%;padding:13px;background:#120e0a;border:1px solid #3a2c20;color:var(--cream);font-family:'Spectral'}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+/* depo */
+.quote{text-align:center;background:linear-gradient(rgba(23,19,15,.85),rgba(23,19,15,.95)),url('https://placehold.co/1400x500/2a1c12/7a2436?text=') center/cover}
+.quote .q{font-family:'Spectral';font-style:italic;font-size:clamp(22px,3.4vw,34px);max-width:820px;margin:16px auto 18px}
+.footer{background:#0f0c09;color:var(--muted);padding:56px 0 28px;border-top:2px solid var(--ember)}
+.footer .grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+.footer h4{font-family:'Oswald';color:var(--cream);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-size:15px}
+@media(max-width:840px){.about .wrap,.res .wrap,.menu-cols,.footer .grid{grid-template-columns:1fr}.nav-links{display:none}.row3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="ribbon">MODELO DEMONSTRATIVO · Kria Web</div>
+<a href="../index.html#galeria" class="btn btn-o back" style="background:#17130f;padding:10px 18px">← Galeria</a>
+
+<nav class="nav"><div class="wrap">
+  <div class="logo">BRASA<span>&amp;</span>SAL</div>
+  <div class="nav-links"><a href="#sobre">A casa</a><a href="#cardapio">Cardápio</a><a href="#reserva">Reservar</a><a href="#contato">Contato</a></div>
+  <a href="#reserva" class="btn btn-e">Reservar mesa</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">Fogo de chão · Vila Madalena</div>
+  <h1>Comida de<br>verdade,<br><span class="ember">no fogo.</span></h1>
+  <p>Carnes maturadas na brasa, legumes tostados no bafo e um chapp gelado. Sem frescura, com muito capricho.</p>
+  <div class="hero-actions"><a href="#reserva" class="btn btn-e">Reservar uma mesa</a><a href="#cardapio" class="btn btn-o">Ver o cardápio</a></div>
+  <div class="hours">Ter–Dom · 18h à meia-noite · &nbsp;R. Aspicuelta, 445 — Vila Madalena/SP</div>
+</div></header>
+
+<div class="marq"><span>🔥 Costela 12h na brasa</span><span>•</span><span>🥩 Corte do dia</span><span>•</span><span>🍷 Carta de vinhos naturais</span><span>•</span><span>🔥 Costela 12h na brasa</span><span>•</span><span>🥩 Corte do dia</span><span>•</span><span>🍷 Carta de vinhos naturais</span></div>
+
+<section id="sobre" class="about"><div class="wrap">
+  <img src="https://placehold.co/560x560/211b15/e2622c?text=Chef+Ícaro+na+brasa" alt="">
+  <div>
+    <div class="head" style="margin-bottom:22px"><div class="kicker">A casa</div><h2>Nasceu de um churrasco<br>que deu certo demais</h2></div>
+    <p style="font-size:17px">Em 2020, o Ícaro largou a cozinha de um restaurante chique pra fazer o que ama: cozinhar no fogo, pra quem senta na mesa como se fosse na casa de um amigo. O Brasa &amp; Sal é isso — lenha, tempero na medida e conversa boa até tarde.</p>
+    <div class="figs"><div><b>6 anos</b><small>de casa cheia</small></div><div><b>2</b><small>fogueiros na cozinha</small></div><div><b>1</b><small>regra: nada industrializado</small></div></div>
+  </div>
+</div></section>
+
+<section id="cardapio" class="menu"><div class="wrap">
+  <div class="head"><div class="kicker">O cardápio</div><h2>Direto da brasa pra sua mesa</h2></div>
+  <div class="tab-title">Pra começar</div>
+  <div class="menu-cols">
+    <div class="dish"><div><h3>Pão na chapa &amp; manteiga defumada</h3><div class="desc">massa fermentada 48h, manteiga da casa</div></div><div class="pr">R$ 24</div></div>
+    <div class="dish"><div><h3>Provolone na brasa</h3><div class="desc">mel picante, orégano fresco</div></div><div class="pr">R$ 38</div></div>
+    <div class="dish"><div><h3>Linguiça artesanal</h3><div class="desc">receita do fogueiro, vinagrete de cebola roxa</div></div><div class="pr">R$ 42</div></div>
+    <div class="dish"><div><h3>Coração no espeto</h3><div class="desc">chimichurri da casa</div></div><div class="pr">R$ 36</div></div>
+  </div>
+  <div class="tab-title">Os principais</div>
+  <div class="menu-cols">
+    <div class="dish"><div><h3>Costela 12 horas</h3><div class="desc">desmancha no garfo, farofa de brasa · serve 2</div></div><div class="pr">R$ 118</div></div>
+    <div class="dish"><div><h3>Ancho maturado 300g</h3><div class="desc">sal grosso, legumes tostados</div></div><div class="pr">R$ 94</div></div>
+    <div class="dish"><div><h3>Frango caipira na taquara</h3><div class="desc">manteiga de ervas, limão queimado</div></div><div class="pr">R$ 72</div></div>
+    <div class="dish"><div><h3>Berinjela inteira na cinza</h3><div class="desc">tahine, melaço · opção vegetariana</div></div><div class="pr">R$ 58</div></div>
+  </div>
+  <div class="tab-title">Doce final</div>
+  <div class="menu-cols">
+    <div class="dish"><div><h3>Banana na brasa</h3><div class="desc">sorvete de doce de leite, castanha</div></div><div class="pr">R$ 28</div></div>
+    <div class="dish"><div><h3>Pudim de rapadura</h3><div class="desc">receita da avó do Ícaro, de verdade</div></div><div class="pr">R$ 26</div></div>
+  </div>
+</div></section>
+
+<section class="quote"><div class="wrap">
+  <div class="kicker ember" style="font-family:'Oswald';letter-spacing:5px">★★★★★</div>
+  <p class="q">“Melhor costela que comi na vida. Fui pra jantar e fiquei até fecharem. Já virei cliente da casa.”</p>
+  <p class="cond" style="font-size:14px;color:var(--muted)">— Bruno Tavares · avaliação no Google</p>
+</div></section>
+
+<section id="reserva" class="res"><div class="wrap">
+  <div>
+    <div class="head" style="margin-bottom:22px"><div class="kicker">Reserva de mesa</div><h2>Garanta seu lugar<br>na brasa</h2></div>
+    <p style="font-size:17px">Fim de semana lota rápido. Reserve sua mesa e a gente deixa tudo pronto — inclusive aquela mesa perto da grelha, se você curte ver o fogo trabalhar.</p>
+    <p class="cond" style="margin-top:24px;font-size:14px;letter-spacing:1px;color:var(--muted)">📍 R. ASPICUELTA, 445 — VILA MADALENA<br>🕐 TER A DOM · 18H À MEIA-NOITE<br>📱 (11) 90000-0000</p>
+  </div>
+  <form class="form" onsubmit="return false">
+    <label>Nome da reserva</label><input placeholder="Em nome de quem?">
+    <div class="row3"><div><label>Data</label><input type="date"></div><div><label>Hora</label><input type="time"></div><div><label>Pessoas</label><select><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select></div></div>
+    <label>Telefone</label><input placeholder="(11) 90000-0000">
+    <label>Alguma observação?</label><input placeholder="Aniversário, restrição alimentar, mesa perto do fogo...">
+    <button class="btn btn-e" style="width:100%;margin-top:24px">Confirmar reserva</button>
+  </form>
+</div></section>
+
+<footer class="footer" id="contato"><div class="wrap grid">
+  <div><div class="logo" style="font-size:26px">BRASA<span>&amp;</span>SAL</div><p style="margin-top:14px;max-width:340px">Cozinha de fogo na Vila Madalena. Lenha, sal grosso e casa cheia desde 2020.</p></div>
+  <div><h4>Horário</h4><p>Terça a Domingo<br>18h à meia-noite<br>Segunda: fechado</p></div>
+  <div><h4>Contato</h4><p>R. Aspicuelta, 445<br>(11) 90000-0000<br><a href="#" class="ember">@brasaesal</a></p></div>
+</div><div class="wrap" style="margin-top:34px;opacity:.6;font-size:12px">© 2026 Brasa &amp; Sal — conteúdo fictício criado como demonstração no Kria Web.</div></footer>
+</body></html>

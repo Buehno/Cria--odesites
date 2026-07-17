@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 275" font-family="Georgia,serif">
+<rect width="440" height="275" fill="#f7efe9"/>
+<rect width="440" height="46" fill="#fffdfb"/><line x1="0" y1="46" x2="440" y2="46" stroke="#ecdcd2"/>
+<text x="24" y="30" fill="#3b2334" font-size="18" letter-spacing="1">Studio Amora</text>
+<g fill="#9c4f66" font-family="Verdana" font-size="8" letter-spacing="1"><text x="250" y="28">SERVIÇOS</text><text x="322" y="28">CLUBE</text><text x="378" y="28">AGENDAR</text></g>
+<text x="24" y="104" fill="#3b2334" font-size="26" font-style="italic">Seu cabelo do</text>
+<text x="24" y="134" fill="#9c4f66" font-size="26" font-style="italic">jeito que você quis</text>
+<rect x="24" y="152" width="120" height="26" rx="2" fill="#9c4f66"/><text x="46" y="170" fill="#fff" font-family="Verdana" font-size="9">AGENDAR</text>
+<rect x="152" y="152" width="96" height="26" rx="2" fill="none" stroke="#3b2334"/>
+<path d="M300 70 q60 0 60 60 v90 h-120 v-90 q0-60 60-60z" fill="#c06b83"/>
+<circle cx="300" cy="120" r="26" fill="#ecdcd2"/>
+<g fill="#fffdfb"><rect x="255" y="196" width="90" height="34" rx="4"/><rect x="352" y="196" width="64" height="34" rx="4" fill="#3b2334"/></g>
+<g transform="translate(0,248)"><rect width="440" height="27" fill="#3b2334"/><text x="24" y="18" fill="#ecdcd2" font-family="Verdana" font-size="8" letter-spacing="3">CORTE · COLORAÇÃO · TRATAMENTOS · NOIVAS</text></g>
+</svg>

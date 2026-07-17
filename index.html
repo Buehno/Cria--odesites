@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kria Web - Crie e compre seu site profissional de forma simples, rápida e divertida. Escolha seu modelo, envie sua marca e receba tudo pronto!">
+    <title>Kria Web | Monte Seu Site de Forma Simples e Rápida</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Folha de Estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar" id="site-header">
+        <div class="container navbar-container">
+            <a href="#" class="logo-container" id="logo-link">
+                <div class="logo-kw">
+                    <span class="gold-text">K</span>w
+                </div>
+            </a>
+            <nav class="nav-menu" id="main-nav">
+                <a href="#inicio" class="nav-link">Início</a>
+                <a href="#galeria" class="nav-link">Templates</a>
+                <a href="#planos" class="nav-link">Planos de Suporte</a>
+                <a href="#wizard-anchor" class="nav-link">Configurador</a>
+                <a href="#contato" class="nav-link">Suporte</a>
+            </nav>
+            <div class="nav-actions">
+                <!-- Theme/Lighting switcher button -->
+                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Alternar Tema Claro/Escuro">
+                    <span class="sun-icon">☀️</span>
+                    <span class="moon-icon" style="display: none;">🌙</span>
+                </button>
+                <a href="#wizard-anchor" class="btn btn-gold btn-sm">Começar 🚀</a>
+                <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Abrir Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-overlay" id="mobile-nav-overlay">
+        <nav class="mobile-nav-menu">
+            <a href="#inicio" class="mobile-nav-link">Início</a>
+            <a href="#planos" class="mobile-nav-link">Planos de Suporte</a>
+            <a href="#wizard-anchor" class="mobile-nav-link">Configurador</a>
+            <a href="#contato" class="mobile-nav-link">Suporte</a>
+            <a href="#wizard-anchor" class="btn btn-gold btn-block mobile-nav-btn">Montar Meu Site 🛠️</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="inicio">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="badge-tech">
+                    <span class="emoji-spacer">✨</span> Rápido, Simples e Sem Complicação!
+                </div>
+                <h1 class="hero-title">Monte Seu Site Profissional <br><span class="gold-gradient-text">Do Seu Jeito!</span> 🚀</h1>
+                <p class="hero-description">
+                    Escolha a estrutura, envie suas imagens e defina suas cores. Geramos seu orçamento na hora. A parte difícil do código fica com a gente! 😎
+                </p>
+                <div class="hero-buttons">
+                    <a href="#wizard-anchor" class="btn btn-gold btn-lg">Criar agora! 🚀</a>
+                    <a href="#planos" class="btn btn-outline">Planos de Suporte</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">5 Dias</span>
+                        <span class="stat-label">Entrega ultra rápida! ⚡</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">100%</span>
+                        <span class="stat-label">Seguro & Otimizado 🔒</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">Amigável</span>
+                        <span class="stat-label">Suporte humanizado 🙌</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-wrapper">
+                    <div class="tech-glow"></div>
+                    <img src="assets/template_saas.jpg" alt="Kria Web Interface Mockup" class="hero-img">
+                    <div class="floating-badge badge-top">
+                        <span>⚡ Velocidade Máxima</span>
+                    </div>
+                    <div class="floating-badge badge-bottom">
+                        <span>🔒 SSL Grátis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="trust-section">
+        <div class="container text-center">
+            <p class="trust-subtitle">TECNOLOGIAS DE SEGURANÇA E PERFORMANCE QUE CUIDAM DO SEU SITE</p>
+            <div class="tech-logos">
+                <div class="tech-logo"><span class="tech-name">React Engine</span></div>
+                <div class="tech-logo"><span class="tech-name">Node.js API</span></div>
+                <div class="tech-logo"><span class="tech-name">WordPress Cloud</span></div>
+                <div class="tech-logo"><span class="tech-name">Cloudflare Firewall</span></div>
+                <div class="tech-logo"><span class="tech-name">Google Secure Server</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALERIA DE TEMPLATES (wireframe + site final) ===== -->
+    <section id="galeria" class="kw-gallery">
+        <div class="container">
+            <div class="kw-gallery-head">
+                <span class="kw-gallery-eyebrow">✨ Modelos prontos</span>
+                <h2 class="kw-gallery-title">Escolha seu <span class="gold-gradient-text">template</span></h2>
+                <p class="kw-gallery-sub">Veja primeiro o <strong>wireframe</strong> (o esboço da estrutura) e depois a <strong>versão final</strong> com imagens e textos de exemplo. Cada modelo já vem pronto para personalizar no configurador.</p>
+            </div>
+            <div class="kw-gallery-grid">
+                <!-- Salão de Beleza -->
+                <article class="kw-tpl-card">
+                    <div class="kw-tpl-preview">
+                        <img src="templates/thumb-salao.svg" alt="Prévia do template Salão de Beleza" loading="lazy">
+                        <span class="kw-tpl-badge">Salão &amp; Beleza</span>
+                    </div>
+                    <div class="kw-tpl-body">
+                        <h3 class="kw-tpl-name">Salão de Beleza</h3>
+                        <p class="kw-tpl-desc">Vitrine de serviços, planos de assinatura e agendamento online. Visual elegante em rosé e ameixa.</p>
+                        <div class="kw-tpl-actions">
+                            <a href="templates/wireframe-salao.html" target="_blank" class="btn btn-outline btn-sm">📐 Ver Wireframe</a>
+                            <a href="templates/site-salao.html" target="_blank" class="btn btn-gold btn-sm">👁 Ver Template</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Restaurante -->
+                <article class="kw-tpl-card">
+                    <div class="kw-tpl-preview">
+                        <img src="templates/thumb-restaurante.svg" alt="Prévia do template Restaurante" loading="lazy">
+                        <span class="kw-tpl-badge">Comida &amp; Restaurante</span>
+                    </div>
+                    <div class="kw-tpl-body">
+                        <h3 class="kw-tpl-name">Restaurante</h3>
+                        <p class="kw-tpl-desc">Apresentação da casa, cardápio completo e reserva de mesa. Clima quente em brasa e carvão.</p>
+                        <div class="kw-tpl-actions">
+                            <a href="templates/wireframe-restaurante.html" target="_blank" class="btn btn-outline btn-sm">📐 Ver Wireframe</a>
+                            <a href="templates/site-restaurante.html" target="_blank" class="btn btn-gold btn-sm">👁 Ver Template</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Empresarial -->
+                <article class="kw-tpl-card">
+                    <div class="kw-tpl-preview">
+                        <img src="templates/thumb-empresa.svg" alt="Prévia do template Empresarial" loading="lazy">
+                        <span class="kw-tpl-badge">Empresarial</span>
+                    </div>
+                    <div class="kw-tpl-body">
+                        <h3 class="kw-tpl-name">Para o seu Negócio</h3>
+                        <p class="kw-tpl-desc">Institucional, escolar ou portfólio: quem somos, serviços, cases e contato. Azul-marinho e esmeralda.</p>
+                        <div class="kw-tpl-actions">
+                            <a href="templates/wireframe-empresa.html" target="_blank" class="btn btn-outline btn-sm">📐 Ver Wireframe</a>
+                            <a href="templates/site-empresa.html" target="_blank" class="btn btn-gold btn-sm">👁 Ver Template</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <p class="kw-gallery-foot">Gostou de um modelo? <a href="#wizard-anchor">Comece a montar o seu no configurador →</a></p>
+        </div>
+    </section>
+
+    <!-- Wizard Section Anchor -->
+    <div id="wizard-anchor" style="position: relative; top: -100px;"></div>
+
+    <!-- Wizard Interactive Section -->
+    <section class="wizard-section" id="criar-site">
+        <div class="container">
+            <div class="wizard-box">
+                <div class="wizard-header">
+                    <h2 class="wizard-title text-center">Configurador Inteligente 🛠️</h2>
+                    <p class="wizard-subtitle text-center">Preencha os campos abaixo com os seus dados e as preferências do site. Acompanhe o prazo e o valor na hora!</p>
+                </div>
+
+                <!-- Progress Tracker -->
+                <div class="wizard-progress-wrapper">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="wizard-progress-bar" style="width: 14.28%;"></div>
+                    </div>
+                    <div class="steps-indicators">
+                        <div class="step-indicator active" data-step="1">
+                            <div class="step-icon">1</div>
+                            <span class="step-label">Modelo</span>
+                        </div>
+                        <div class="step-indicator" data-step="2">
+                            <div class="step-icon">2</div>
+                            <span class="step-label">Imagens</span>
+                        </div>
+                        <div class="step-indicator" data-step="3">
+                            <div class="step-icon">3</div>
+                            <span class="step-label">Cores</span>
+                        </div>
+                        <div class="step-indicator" data-step="4">
+                            <div class="step-icon">4</div>
+                            <span class="step-label">Conteúdo</span>
+                        </div>
+                        <div class="step-indicator" data-step="5">
+                            <div class="step-icon">5</div>
+                            <span class="step-label">Contato</span>
+                        </div>
+                        <div class="step-indicator" data-step="6">
+                            <div class="step-icon">6</div>
+                            <span class="step-label">Resumo</span>
+                        </div>
+                        <div class="step-indicator" data-step="7">
+                            <div class="step-icon">7</div>
+                            <span class="step-label">Pagar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Wizard container -->
+                <form id="wizard-form" onsubmit="event.preventDefault();">
+                    
+                    <!-- STEP 1: Template Selection -->
+                    <div class="wizard-step active-step" data-step="1">
+                        <h3 class="step-title">Escolha Seu Modelo Base 📂</h3>
+                        <p class="step-description">Selecione uma estrutura para começarmos ou solicite que desenhemos uma página exclusiva do zero.</p>
+                        
+                        <div class="wizard-options-grid">
+                            <label class="wizard-card-option">
+                                <input type="radio" name="base_template" value="salao" checked>
+                                <div class="option-card-inner">
+                                    <div class="radio-dot"></div>
+                                    <div class="option-meta">
+                                        <span class="option-title">Salão de Beleza 💇</span>
+                                        <span class="option-desc">Vitrine de serviços, planos de assinatura e agendamento online.</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="wizard-card-option">
+                                <input type="radio" name="base_template" value="restaurante">
+                                <div class="option-card-inner">
+                                    <div class="radio-dot"></div>
+                                    <div class="option-meta">
+                                        <span class="option-title">Restaurante 🔥</span>
+                                        <span class="option-desc">Apresentação da casa, cardápio completo e reserva de mesa.</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="wizard-card-option">
+                                <input type="radio" name="base_template" value="empresa">
+                                <div class="option-card-inner">
+                                    <div class="radio-dot"></div>
+                                    <div class="option-meta">
+                                        <span class="option-title">Para o seu Negócio 🏢</span>
+                                        <span class="option-desc">Institucional, escolar ou portfólio: serviços, cases e contato.</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="wizard-card-option">
+                                <input type="radio" name="base_template" value="exclusivo">
+                                <div class="option-card-inner">
+                                    <div class="radio-dot"></div>
+                                    <div class="option-meta">
+                                        <span class="option-title">Design 100% Exclusivo ✨</span>
+                                        <span class="option-desc">Nossa equipe desenvolve um desenho sob medida exclusivo para o seu site.</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Exclusive Text Area -->
+                        <div class="exclusive-info-box" id="exclusive-details-container" style="display: none;">
+                            <label for="exclusive_description" class="form-label">O que você gostaria de ter no seu layout exclusivo? <span class="required">*</span></label>
+                            <textarea id="exclusive_description" name="exclusive_description" class="form-input" rows="4" placeholder="Ex: Um site moderno para minha imobiliária, contendo galeria dinâmica de imóveis, filtros rápidos de busca, cores azul marinho e integração de mapa."></textarea>
+                            
+                            <div class="form-group mt-3">
+                                <label class="form-label">Envie uma referência ou desenho (Opcional)</label>
+                                <div class="file-upload-wrapper">
+                                    <input type="file" id="exclusive_file" name="exclusive_file" class="file-input">
+                                    <div class="file-upload-drag">
+                                        <span class="upload-text">Arraste uma imagem/esboço ou clique para selecionar</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Identity (Logo & Banner) -->
+                    <div class="wizard-step" data-step="2">
+                        <h3 class="step-title">Suas Imagens (Logo e Banner) 🖼️</h3>
+                        <p class="step-description">Insira a logo da sua empresa e uma imagem que deseja em destaque no topo da página.</p>
+                        
+                        <div class="identity-grid">
+                            <!-- Logo Upload -->
+                            <div class="identity-upload-card">
+                                <span class="upload-card-title">Logotipo da Marca</span>
+                                <p class="upload-card-desc">Formatos recomendados: PNG ou SVG (com fundo transparente).</p>
+                                <div class="file-upload-container">
+                                    <input type="file" id="logo_upload" name="logo_upload" accept="image/*" class="file-input">
+                                    <div class="dropzone" id="logo-dropzone">
+                                        <div class="dropzone-prompt">
+                                            <span class="dropzone-text">Carregar Logotipo 📁</span>
+                                        </div>
+                                        <img id="logo-preview" class="image-preview" alt="Pré-visualização do Logo" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Banner Upload -->
+                            <div class="identity-upload-card">
+                                <span class="upload-card-title">Imagem Principal (Banner)</span>
+                                <p class="upload-card-desc">A imagem principal que ficará em destaque na seção inicial do site.</p>
+                                <div class="file-upload-container">
+                                    <input type="file" id="banner_upload" name="banner_upload" accept="image/*" class="file-input">
+                                    <div class="dropzone" id="banner-dropzone">
+                                        <div class="dropzone-prompt">
+                                            <span class="dropzone-text">Carregar Imagem 📁</span>
+                                        </div>
+                                        <img id="banner-preview" class="image-preview" alt="Pré-visualização do Banner" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Direct option for those without logos -->
+                        <div class="alert-box-info mt-4">
+                            <div class="alert-icon">💡</div>
+                            <div class="alert-content">
+                                <strong>Ainda não tem logo ou imagens prontas?</strong> Não se preocupe! Pode avançar normalmente. Você poderá nos enviar tudo depois, ou solicitar que criemos para você!
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Color Palette & Typography -->
+                    <div class="wizard-step" data-step="3">
+                        <h3 class="step-title">Tema de Cores do Site 🎨</h3>
+                        <p class="step-description">Defina as cores que farão parte do design do seu projeto.</p>
+                        
+                        <div class="palette-grid">
+                            <!-- Option 1: Dark Gold / Primary -->
+                            <label class="palette-card">
+                                <input type="radio" name="color_theme" value="dark_gold" checked>
+                                <div class="palette-card-inner">
+                                    <div class="palette-indicator">
+                                        <span class="swatch" style="background-color: #06080c;"></span>
+                                        <span class="swatch" style="background-color: #1e293b;"></span>
+                                        <span class="swatch" style="background-color: #c5a059;"></span>
+                                    </div>
+                                    <div class="palette-meta">
+                                        <strong class="palette-name">Premium Gold</strong>
+                                        <span class="palette-desc">Preto Profundo, Slate e detalhes em Ouro Refinado.</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Option 2: Security Blue -->
+                            <label class="palette-card">
+                                <input type="radio" name="color_theme" value="security_blue">
+                                <div class="palette-card-inner">
+                                    <div class="palette-indicator">
+                                        <span class="swatch" style="background-color: #090d16;"></span>
+                                        <span class="swatch" style="background-color: #1e3a8a;"></span>
+                                        <span class="swatch" style="background-color: #3b82f6;"></span>
+                                    </div>
+                                    <div class="palette-meta">
+                                        <strong class="palette-name">Azul Tecnológico</strong>
+                                        <span class="palette-desc">Tons de azul e ciano, transmitindo segurança e confiança.</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Option 3: Clean Nordic -->
+                            <label class="palette-card">
+                                <input type="radio" name="color_theme" value="clean_nordic">
+                                <div class="palette-card-inner">
+                                    <div class="palette-indicator">
+                                        <span class="swatch" style="background-color: #ffffff;"></span>
+                                        <span class="swatch" style="background-color: #f1f5f9;"></span>
+                                        <span class="swatch" style="background-color: #0f172a;"></span>
+                                    </div>
+                                    <div class="palette-meta">
+                                        <strong class="palette-name">Branco & Cinza Clean</strong>
+                                        <span class="palette-desc">Visual limpo com fundo claro e textos contrastantes em grafite.</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Option 4: Custom colors -->
+                            <label class="palette-card">
+                                <input type="radio" name="color_theme" value="custom_colors">
+                                <div class="palette-card-inner">
+                                    <div class="palette-indicator-custom">
+                                        🎨
+                                    </div>
+                                    <div class="palette-meta">
+                                        <strong class="palette-name">Minhas Próprias Cores</strong>
+                                        <span class="palette-desc">Selecione manualmente a cor de fundo e de destaque do site.</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Custom Colors Selector -->
+                        <div class="custom-color-pickers" id="custom-colors-container" style="display: none;">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="color_primary" class="form-label">Cor Principal de Fundo</label>
+                                    <div class="color-picker-wrapper">
+                                        <input type="color" id="color_primary" name="color_primary" value="#1e3a8a" class="color-picker">
+                                        <input type="text" id="color_primary_text" value="#1e3a8a" class="form-input color-text-input">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="color_secondary" class="form-label">Cor Secundária (Destaques/Botões)</label>
+                                    <div class="color-picker-wrapper">
+                                        <input type="color" id="color_secondary" name="color_secondary" value="#d4af37" class="color-picker">
+                                        <input type="text" id="color_secondary_text" value="#d4af37" class="form-input color-text-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: Media & Copy -->
+                    <div class="wizard-step" data-step="4">
+                        <h3 class="step-title">Textos e Vídeos do Site 📝</h3>
+                        <p class="step-description">Escreva um pouco sobre a sua marca e inclua vídeos (se tiver) para rechearmos a página.</p>
+                        
+                        <div class="form-group">
+                            <label for="video_link" class="form-label">Link de Vídeo Principal (YouTube, Vimeo ou Drive)</label>
+                            <input type="url" id="video_link" name="video_link" class="form-input" placeholder="https://www.youtube.com/watch?v=exemplo">
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label class="form-label">Ou envie um arquivo de vídeo curto (máximo 50MB)</label>
+                            <div class="file-upload-wrapper">
+                                <input type="file" id="video_file" name="video_file" accept="video/*" class="file-input">
+                                <div class="file-upload-drag" id="video-dragzone">
+                                    <span class="upload-text" id="video-upload-status">Arraste seu vídeo de apresentação ou clique para selecionar</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-grid mt-3">
+                            <div class="form-group">
+                                <label for="text_about" class="form-label">Quem somos / Sobre nós</label>
+                                <textarea id="text_about" name="text_about" class="form-input" rows="4" placeholder="Descreva brevemente o que sua marca faz, seus propósitos e principais valores comercializados."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="text_services" class="form-label">Lista de Serviços ou Detalhes dos Produtos</label>
+                                <textarea id="text_services" name="text_services" class="form-input" rows="4" placeholder="Descreva os produtos ou serviços que você oferece (ex: Consultoria Financeira, Desenvolvimento de Apps, etc.)."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 5: Contact Details -->
+                    <div class="wizard-step" data-step="5">
+                        <h3 class="step-title">Informações de Contato 📞</h3>
+                        <p class="step-description">Esses dados serão inseridos diretamente no cabeçalho, rodapé e nos botões de clique do seu site.</p>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="contact_email" class="form-label">E-mail Comercial de Contato <span class="required">*</span></label>
+                                <input type="email" id="contact_email" name="contact_email" class="form-input" placeholder="contato@empresa.com.br" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact_phone" class="form-label">Número do WhatsApp / Telefone <span class="required">*</span></label>
+                                <input type="tel" id="contact_phone" name="contact_phone" class="form-input" placeholder="(11) 99999-9999" required>
+                            </div>
+                        </div>
+
+                        <div class="form-grid mt-3">
+                            <div class="form-group">
+                                <label for="contact_address" class="form-label">Endereço Comercial (Opcional)</label>
+                                <input type="text" id="contact_address" name="contact_address" class="form-input" placeholder="Av. Paulista, 1000 - São Paulo/SP">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact_socials" class="form-label">Link de Rede Social (Instagram, LinkedIn, etc.)</label>
+                                <input type="url" id="contact_socials" name="contact_socials" class="form-input" placeholder="https://instagram.com/suamarca">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 6: Review & Timeline -->
+                    <div class="wizard-step" data-step="6">
+                        <h3 class="step-title">Resumo e Geração do Orçamento 📋</h3>
+                        <p class="step-description">Veja o resumo de sua configuração e selecione seu plano de suporte mensal caso precise de alterações futuras.</p>
+                        
+                        <div class="review-box">
+                            <div class="review-details">
+                                <h4 class="review-section-subtitle">Dados do Site Selecionados</h4>
+                                <table class="review-table">
+                                    <tr>
+                                        <th>Modelo Selecionado:</th>
+                                        <td id="review-template-name">Carregando...</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Logo & Imagens:</th>
+                                        <td id="review-assets-status">Carregando...</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Esquema de Cores:</th>
+                                        <td id="review-color-scheme">Carregando...</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Arquivos e Mídia:</th>
+                                        <td id="review-media-status">Carregando...</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Canais de Contato:</th>
+                                        <td id="review-contact-details">Carregando...</td>
+                                    </tr>
+                                </table>
+
+                                <!-- Support selection plan directly integrated into pricing calculations -->
+                                <div class="form-group mt-3">
+                                    <label for="support_plan" class="form-label">Plano de Manutenção & Suporte Mensal (Opcional) 🛠️</label>
+                                    <p class="step-description" style="margin-bottom: 8px; font-size: 13px;">Opcional caso queira alterações específicas ou ajustes pós-entrega.</p>
+                                    <select id="support_plan" name="support_plan" class="form-input">
+                                        <option value="none" selected>Sem Plano de Suporte (Apenas o Site) - R$ 0</option>
+                                        <option value="bronze">Bronze (Suporte Técnico a Bugs) - R$ 99/mês</option>
+                                        <option value="prata">Prata (Suporte + 3 alterações mensais) - R$ 249/mês</option>
+                                        <option value="ouro">Ouro (Suporte + Alterações ilimitadas) - R$ 499/mês</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="deadline-pricing-card">
+                                <div class="card-glow"></div>
+                                <div class="pricing-card-header">
+                                    <span>Orçamento Gerado</span>
+                                    <h2 class="dynamic-price" id="wizard-summary-price">R$ 699</h2>
+                                    <div class="recurring-price-badge" id="wizard-summary-recurring" style="font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-top: 4px; display: none;">
+                                        + R$ 0 /mês
+                                    </div>
+                                </div>
+                                <div class="pricing-card-details">
+                                    <div class="detail-row">
+                                        <span>Prazo de Produção:</span>
+                                        <strong id="wizard-summary-deadline">5 dias úteis</strong>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span>Certificado SSL:</span>
+                                        <strong class="gold-text">Incluso de Graça</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Option to create with us (CTA) -->
+                        <div class="creation-service-optin mt-4">
+                            <div class="service-optin-header">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="kria-assistance-toggle" name="kria_assistance">
+                                    <span class="checkmark"></span>
+                                    <div class="checkbox-label-content">
+                                        <strong class="checkbox-title">Deseja que nossa equipe cuide de toda a montagem, escrita e SEO? ✨</strong>
+                                        <p class="checkbox-description">Por apenas <span class="gold-text">+R$ 350</span>, nossos designers e redatores profissionais organizam todos os textos, ajustam o design para máxima conversão, configuram seu domínio e colocam seu site no ar sem que você precise fazer nada!</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="service-optin-badge" id="assistance-badge" style="display: none;">
+                                🌟 Criação Assistida Ativa (+3 dias úteis para redação técnica e auditoria de SEO)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 7: Secure Payment Simulator -->
+                    <div class="wizard-step" data-step="7">
+                        <h3 class="step-title">Checkout Seguro e Início do Pedido 🔒</h3>
+                        <p class="step-description">Selecione como deseja efetuar o pagamento para iniciarmos a criação do seu site.</p>
+                        
+                        <div class="checkout-grid">
+                            <!-- Left: Total Order summary -->
+                            <div class="checkout-summary-card">
+                                <h4>Resumo da Compra</h4>
+                                <div class="summary-details">
+                                    <div class="summary-line">
+                                        <span id="order-template-label">Modelo Salão de Beleza</span>
+                                        <span id="order-template-price">R$ 699,00</span>
+                                    </div>
+                                    <div class="summary-line" id="order-assistance-line" style="display: none;">
+                                        <span>Criação Assistida Kria Web</span>
+                                        <span>R$ 350,00</span>
+                                    </div>
+                                    <div class="summary-line" id="order-support-line" style="display: none;">
+                                        <span id="order-support-label">Plano de Suporte Pro</span>
+                                        <span id="order-support-price">R$ 249,00 /mês</span>
+                                    </div>
+                                    <div class="summary-line highlight-line">
+                                        <span>Promoção de Lançamento (SSL Grátis)</span>
+                                        <span class="green-text">- R$ 150,00</span>
+                                    </div>
+                                    <div class="summary-divider"></div>
+                                    <div class="summary-line total-line">
+                                        <span>Valor Total:</span>
+                                        <span id="order-total-price">R$ 699,00</span>
+                                    </div>
+                                    <div class="summary-line total-deadline">
+                                        <span>Prazo Estimado de Entrega:</span>
+                                        <strong id="order-total-deadline">5 dias úteis</strong>
+                                    </div>
+                                </div>
+                                <div class="security-badge-footer">
+                                    <span>🔒 Conexão Criptografada SSL</span>
+                                </div>
+                            </div>
+
+                            <!-- Right: Payment Simulator Tabs -->
+                            <div class="payment-tabs-wrapper">
+                                <div class="payment-tabs-headers">
+                                    <button type="button" class="pay-tab active" data-target="pix-payment">PIX (Imediato)</button>
+                                    <button type="button" class="pay-tab" data-target="card-payment">Cartão de Crédito</button>
+                                    <button type="button" class="pay-tab" data-target="boleto-payment">Boleto Bancário</button>
+                                </div>
+
+                                <div class="payment-tabs-contents">
+                                    <!-- Pix Payment tab -->
+                                    <div class="payment-tab-content active-content" id="pix-payment">
+                                        <div class="pix-instructions">
+                                            <div class="qr-code-placeholder">
+                                                <svg width="150" height="150" viewBox="0 0 29 29" class="qr-code-svg">
+                                                    <rect width="29" height="29" fill="white"/>
+                                                    <path d="M0,0 h7 v7 h-7 z M1,1 v5 h5 v-5 z M2,2 h3 v3 h-3 z" fill="black"/>
+                                                    <path d="M22,0 h7 v7 h-7 z M23,1 v5 h5 v-5 z M24,2 h3 v3 h-3 z" fill="black"/>
+                                                    <path d="M0,22 h7 v7 h-7 z M1,23 v5 h5 v-5 z M2,24 h3 v3 h-3 z" fill="black"/>
+                                                    <path d="M12,2 h2 v3 h-2 z M15,4 h3 v1 h-3 z M9,9 h2 v4 h-2 z M13,10 h4 v2 h-4 z M19,8 h3 v4 h-3 z M2,9 h4 v2 h-4 z M24,13 h2 v4 h-2 z M10,18 h6 v2 h-6 z M17,22 h4 v4 h-4 z M9,24 h3 v2 h-3 z M23,24 h3 v3 h-3 z" fill="black"/>
+                                                </svg>
+                                            </div>
+                                            <p class="pix-txt">Escaneie o código QR acima no aplicativo do seu banco ou use a chave copia e cola abaixo.</p>
+                                            <div class="pix-copy-box">
+                                                <input type="text" id="pix-code" value="00020126580014BR.GOV.BCB.PIX0136kriaweb-recebimentos-pix-simulacao-20265204000053039865406899.005802BR5908Kria Web6009Sao Paulo62070503***6304A5F2" class="form-input" readonly>
+                                                <button type="button" class="btn btn-gold btn-sm" id="btn-copy-pix">Copiar Código</button>
+                                            </div>
+                                            <span class="pix-timer">Aguardando pagamento...</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Credit Card Payment tab -->
+                                    <div class="payment-tab-content" id="card-payment">
+                                        <div class="card-form-simulator">
+                                            <!-- Simple card mockup -->
+                                            <div class="credit-card-mockup" id="card-visual">
+                                                <div class="card-logo">KriaPay</div>
+                                                <div class="card-chip"></div>
+                                                <div class="card-number-display" id="card-num-disp">•••• •••• •••• ••••</div>
+                                                <div class="card-holder-display" id="card-name-disp">NOME DO TITULAR</div>
+                                                <div class="card-expiry-display" id="card-exp-disp">MM/AA</div>
+                                            </div>
+                                            
+                                            <!-- Card Form -->
+                                            <div class="card-inputs">
+                                                <div class="form-group">
+                                                    <label for="card_num" class="form-label-card">Número do Cartão</label>
+                                                    <input type="text" id="card_num" class="form-input-card" placeholder="4000 1234 5678 9010" maxlength="19">
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <label for="card_name" class="form-label-card">Nome Impresso no Cartão</label>
+                                                    <input type="text" id="card_name" class="form-input-card" placeholder="JOÃO SILVA" style="text-transform: uppercase;">
+                                                </div>
+                                                <div class="form-grid-card mt-2">
+                                                    <div class="form-group">
+                                                        <label for="card_expiry" class="form-label-card">Validade</label>
+                                                        <input type="text" id="card_expiry" class="form-input-card" placeholder="12/30" maxlength="5">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="card_cvv" class="form-label-card">CVV</label>
+                                                        <input type="text" id="card_cvv" class="form-input-card" placeholder="123" maxlength="4">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Boleto Bancário tab -->
+                                    <div class="payment-tab-content" id="boleto-payment">
+                                        <div class="boleto-wrapper text-center">
+                                            <p class="boleto-txt">O boleto bancário é compensado em até 2 dias úteis. A produção do seu site será iniciada no mesmo dia da compensação.</p>
+                                            <button type="button" class="btn btn-outline" id="btn-generate-boleto">Baixar Boleto (PDF)</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wizard Final Submit -->
+                        <div class="wizard-submit-bar mt-4 text-center">
+                            <button type="button" class="btn btn-gold btn-lg btn-block" id="btn-finish-wizard">Finalizar e Criar Meu Site! 🎉</button>
+                        </div>
+                    </div>
+
+                    <!-- Wizard Actions Buttons -->
+                    <div class="wizard-footer-actions mt-4" id="wizard-navigation-buttons">
+                        <button type="button" class="btn btn-outline" id="btn-wizard-prev" style="visibility: hidden;">Voltar</button>
+                        <button type="button" class="btn btn-gold" id="btn-wizard-next">Próximo Passo ➡️</button>
+                    </div>
+
+                </form>
+
+                <!-- Success State Overlay -->
+                <div class="success-screen-overlay" id="wizard-success-screen" style="display: none;">
+                    <div class="success-box text-center">
+                        <div class="success-icon-wrapper">
+                            <span>✅</span>
+                        </div>
+                        <h2 class="success-title">Pedido Criado com Sucesso!</h2>
+                        <p class="success-text">Sua ordem de desenvolvimento <strong id="order-number-display" class="gold-text">#KR-2026-987</strong> foi recebida.</p>
+                        
+                        <div class="success-summary-card">
+                            <p><strong>Prazo Estimado de Produção:</strong> <span id="success-deadline-value">5 dias úteis</span></p>
+                            <p>Tudo pronto! Nossa equipe recebeu os detalhes do site, cores, logo, mídias e canais de contato. Entraremos em contato com você pelo e-mail: <strong id="success-email-value">-</strong>.</p>
+                        </div>
+
+                        <div class="success-actions mt-4">
+                            <button type="button" class="btn btn-gold" id="btn-success-reset">Configurar Outro Site</button>
+                            <a href="#contato" class="btn btn-outline" id="btn-success-contact">Falar no WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Plans & Maintenance Section -->
+    <section class="plans-section" id="planos">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Planos de <span class="gold-gradient-text">Suporte & Evolução</span></h2>
+                <p class="section-description">Opcionais para manter seu site atualizado, com alterações específicas inclusas e suporte técnico a qualquer momento. 🛠️</p>
+            </div>
+
+            <div class="plans-grid">
+                <!-- Bronze Support Card -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <span class="plan-tier">Suporte Bronze 🥉</span>
+                        <h3 class="plan-price">R$ 99 <span class="price-type">/mês</span></h3>
+                        <p class="plan-tagline">Para quem precisa manter o site seguro e livre de bugs.</p>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Monitoramento de Segurança 24/7</li>
+                            <li><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Correção de Bugs e Estabilidade</li>
+                            <li><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Backups Semanais Automáticos</li>
+                            <li><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Certificado SSL Vitalício</li>
+                            <li class="disabled"><svg class="cross-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Alterações de layout inclusas</li>
+                            <li class="disabled"><svg class="cross-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Gerente de conta exclusivo</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <a href="#wizard-anchor" class="btn btn-outline btn-block">Configurar com Suporte</a>
+                    </div>
+                </div>
+
+                <!-- Prata Support Card (Popular) -->
+                <div class="plan-card active-plan">
+                    <div class="popular-ribbon">Mais Indicado! ⭐</div>
+                    <div class="plan-header">
+                        <span class="plan-tier">Suporte Prata Pro 🥈</span>
+                        <h3 class="plan-price">R$ 249 <span class="price-type">/mês</span></h3>
+                        <p class="plan-tagline">Ideal para empresas que atualizam informações com frequência.</p>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Tudo do Plano Bronze</li>
+                            <li><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> **Até 3 Alterações de Conteúdo/mês**</li>
+                            <li><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Atualização de Banners & Textos</li>
+                            <li><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Relatório mensal de acessos SEO</li>
+                            <li><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Suporte Prioritário WhatsApp</li>
+                            <li class="disabled"><svg class="cross-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Designer/Developer dedicado</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <a href="#wizard-anchor" class="btn btn-gold btn-block">Configurar com Suporte</a>
+                    </div>
+                </div>
+
+                <!-- Ouro Support Card -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <span class="plan-tier">Suporte Ouro VIP 🥇</span>
+                        <h3 class="plan-price">R$ 499 <span class="price-type">/mês</span></h3>
+                        <p class="plan-tagline">Para projetos em evolução constante que querem time sob demanda.</p>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Tudo do Plano Prata</li>
+                            <li><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> **Alterações Ilimitadas de Conteúdo**</li>
+                            <li><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Evolução de Recursos & Integrações</li>
+                            <li><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Criação de Novas Páginas e Banners</li>
+                            <li><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Time de Design/Dev Dedicado</li>
+                            <li><svg class="check-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Resposta em até 4 horas úteis</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <a href="#wizard-anchor" class="btn btn-outline btn-block">Configurar com Suporte</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="contact-section" id="contato">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info-panel">
+                    <h2 class="contact-title">Precisa de Algum Recurso <span class="gold-gradient-text">Especial?</span> 💬</h2>
+                    <p class="contact-description">Se você precisa de um site muito complexo com integrações sob medida (como sistemas de login, banco de dados ou painéis personalizados), fale diretamente conosco no suporte ao lado!</p>
+                    
+                    <div class="contact-channels">
+                        <div class="channel-card">
+                            <div class="channel-icon">
+                                💬
+                            </div>
+                            <div class="channel-details">
+                                <span class="channel-label">Fale Conosco no WhatsApp</span>
+                                <strong class="channel-value">+55 (11) 98765-4321</strong>
+                            </div>
+                        </div>
+                        <div class="channel-card">
+                            <div class="channel-icon">
+                                ✉️
+                            </div>
+                            <div class="channel-details">
+                                <span class="channel-label">Suporte por E-mail</span>
+                                <strong class="channel-value">contato@kriaweb.com.br</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-panel">
+                    <form id="contact-form" onsubmit="event.preventDefault(); alert('Mensagem enviada! Retornaremos o mais rápido possível.'); this.reset();">
+                        <div class="form-group">
+                            <label for="form_name" class="form-label">Nome Completo</label>
+                            <input type="text" id="form_name" class="form-input" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-grid mt-2">
+                            <div class="form-group">
+                                <label for="form_email" class="form-label">Seu E-mail</label>
+                                <input type="email" id="form_email" class="form-input" placeholder="seuemail@empresa.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_whatsapp" class="form-label">WhatsApp</label>
+                                <input type="tel" id="form_whatsapp" class="form-input" placeholder="(11) 99999-9999" required>
+                            </div>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="form_message" class="form-label">O que você precisa no seu site?</label>
+                            <textarea id="form_message" class="form-input" rows="4" placeholder="Descreva os recursos específicos ou dúvidas que você tenha..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-gold btn-block mt-3">Enviar Mensagem ➡️</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <span class="footer-logo"><span class="gold-text">K</span>w</span>
+                <p class="footer-about-text">Criando sites otimizados, velozes e seguros de forma simples e descomplicada!</p>
+            </div>
+            <div class="footer-links">
+                <strong>Serviços</strong>
+                <a href="#wizard-anchor">Configurar Site</a>
+                <a href="#planos">Planos de Suporte</a>
+            </div>
+            <div class="footer-links">
+                <strong>Sobre Nós</strong>
+                <a href="#inicio">Início</a>
+                <a href="#contato">Fale no WhatsApp</a>
+                <a href="#">Privacidade</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Kria Web. Todos os direitos reservados. Código limpo e otimizado.</p>
+        </div>
+    </footer>
+
+    <!-- Botão de WhatsApp Flutuante -->
+    <a href="https://wa.me/5511987654321" class="whatsapp-btn-float" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco no WhatsApp">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    </a>
+
+    <!-- Lógica JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>

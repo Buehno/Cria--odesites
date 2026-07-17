@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 275" font-family="Arial,sans-serif">
+<rect width="440" height="275" fill="#17130f"/>
+<radialGradient id="g" cx="72%" cy="60%" r="60%"><stop offset="0" stop-color="#e2622c" stop-opacity=".33"/><stop offset="1" stop-color="#17130f" stop-opacity="0"/></radialGradient>
+<rect width="440" height="275" fill="url(#g)"/>
+<rect width="440" height="44" fill="#17130f"/><line x1="0" y1="44" x2="440" y2="44" stroke="#3a2c20"/>
+<text x="24" y="29" fill="#f4ece0" font-size="17" font-weight="bold" letter-spacing="2">BRASA<tspan fill="#e2622c">&amp;</tspan>SAL</text>
+<g fill="#f4ece0" font-size="8" letter-spacing="1"><text x="250" y="27">A CASA</text><text x="312" y="27">CARDÁPIO</text><text x="386" y="27">RESERVAR</text></g>
+<text x="24" y="112" fill="#e2622c" font-size="10" letter-spacing="4">FOGO DE CHÃO · VILA MADALENA</text>
+<text x="22" y="150" fill="#f4ece0" font-size="34" font-weight="bold">COMIDA DE</text>
+<text x="22" y="184" fill="#f4ece0" font-size="34" font-weight="bold">VERDADE, <tspan fill="#e2622c">NO FOGO.</tspan></text>
+<rect x="24" y="204" width="128" height="30" fill="#e2622c"/><text x="44" y="224" fill="#17130f" font-size="10" font-weight="bold" letter-spacing="1">RESERVAR MESA</text>
+<rect x="160" y="204" width="104" height="30" fill="none" stroke="#f4ece0"/>
+<g transform="translate(0,250)"><rect width="440" height="25" fill="#e2622c"/><text x="24" y="17" fill="#17130f" font-size="8" font-weight="bold" letter-spacing="2">🔥 COSTELA 12H · 🥩 CORTE DO DIA · 🍷 VINHOS NATURAIS</text></g>
+</svg>

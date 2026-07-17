@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 275" font-family="Arial,sans-serif">
+<rect width="440" height="275" fill="#ffffff"/>
+<rect width="440" height="120" fill="#eef4f9"/>
+<rect width="440" height="46" fill="#ffffff"/><line x1="0" y1="46" x2="440" y2="46" stroke="#e2eaf1"/>
+<rect x="24" y="16" width="16" height="16" rx="4" fill="#0d8368"/>
+<text x="48" y="30" fill="#0e2a4a" font-size="16" font-weight="bold">Vértice</text>
+<g fill="#5a6b7f" font-size="8"><text x="250" y="28">A EMPRESA</text><text x="322" y="28">SERVIÇOS</text><text x="388" y="28">CASES</text></g>
+<rect x="24" y="66" width="128" height="16" rx="8" fill="#dff2ec"/><text x="36" y="78" fill="#0d8368" font-size="8" font-weight="bold">● CONSULTORIA &amp; PROJETOS</text>
+<text x="22" y="112" fill="#0e2a4a" font-size="21" font-weight="bold">A gente organiza o</text>
+<text x="22" y="138" fill="#0e2a4a" font-size="21" font-weight="bold">que trava seu negócio.</text>
+<rect x="24" y="152" width="150" height="26" rx="6" fill="#0d8368"/><text x="40" y="169" fill="#fff" font-size="9" font-weight="bold">Diagnóstico gratuito</text>
+<rect x="182" y="152" width="70" height="26" rx="6" fill="none" stroke="#e2eaf1"/>
+<rect x="300" y="60" width="118" height="86" rx="10" fill="#0e2a4a"/><rect x="312" y="72" width="94" height="10" rx="3" fill="#12a37f"/><rect x="312" y="90" width="70" height="7" rx="3" fill="#3a5573"/><rect x="312" y="104" width="82" height="7" rx="3" fill="#3a5573"/><rect x="312" y="122" width="50" height="14" rx="4" fill="#12a37f"/>
+<g transform="translate(0,196)"><rect width="440" height="52" fill="#0e2a4a"/>
+<g fill="#fff" font-size="15" font-weight="bold" text-anchor="middle"><text x="80" y="222">140+</text><text x="185" y="222">18</text><text x="290" y="222">96%</text><text x="390" y="222">4</text></g>
+<g fill="#9fb6cc" font-size="7" text-anchor="middle"><text x="80" y="236">projetos</text><text x="185" y="236">anos</text><text x="290" y="236">renovam</text><text x="390" y="236">estados</text></g></g>
+<rect y="248" width="440" height="27" fill="#0a1f38"/>
+</svg>
