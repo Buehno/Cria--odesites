@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 275" font-family="'Oswald',Arial,sans-serif">
+<rect width="440" height="275" fill="#0c0c0c"/>
+<rect width="440" height="46" fill="#141414"/><line x1="0" y1="46" x2="440" y2="46" stroke="#c8a24a" stroke-opacity=".25"/>
+<text x="24" y="31" fill="#ffffff" font-family="'Bebas Neue',Arial" font-size="22" letter-spacing="2">ESTILO <tspan fill="#c8a24a">R</tspan></text>
+<g fill="#a5a09a" font-size="8" letter-spacing="1"><text x="250" y="28">SERVIÇOS</text><text x="322" y="28">EQUIPE</text><text x="384" y="28">UNIDADES</text></g>
+<text x="24" y="104" fill="#ffffff" font-family="'Bebas Neue',Arial" font-size="30" letter-spacing="1">Barbearia de shopping</text>
+<text x="24" y="134" fill="#c8a24a" font-family="'Bebas Neue',Arial" font-size="30" letter-spacing="1">pertinho de você</text>
+<rect x="24" y="152" width="120" height="28" rx="3" fill="#c8a24a"/><text x="40" y="171" fill="#161200" font-size="10" letter-spacing="1">AGENDAR</text>
+<rect x="152" y="152" width="120" height="28" rx="3" fill="none" stroke="#c8a24a"/><text x="170" y="171" fill="#c8a24a" font-size="10" letter-spacing="1">PLANOS</text>
+<rect x="300" y="66" width="118" height="118" rx="6" fill="#1d1d1d" stroke="#c8a24a" stroke-opacity=".3"/>
+<circle cx="359" cy="112" r="24" fill="#c8a24a" fill-opacity=".18" stroke="#c8a24a"/>
+<path d="M347 118 l8 8 16-18" stroke="#c8a24a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="359" y="160" fill="#a5a09a" font-size="8" letter-spacing="1" text-anchor="middle">POR ASSINATURA</text>
+<g transform="translate(0,206)"><rect y="0" width="440" height="26" fill="#c8a24a"/><text x="24" y="17" fill="#161200" font-size="8" letter-spacing="2">WI-FI · CLIMATIZADO · TOALHA QUENTE · FRIGOBAR · APP</text></g>
+<g transform="translate(0,232)"><rect width="440" height="43" fill="#080808"/><text x="24" y="19" fill="#ffffff" font-size="9" letter-spacing="1">CORTE R$45/35 · BARBA R$10 · PLANO VIP R$149</text><text x="24" y="34" fill="#a5a09a" font-size="8" letter-spacing="2">TABOÃO · PIRAJUSSARA · SP</text></g>
+</svg>

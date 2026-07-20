@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Estilo R · Barbearia por Assinatura — Taboão &amp; Pirajussara, SP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0c0c0c;--coal:#141414;--coal2:#1a1a1a;--card:#1d1d1d;--gold:#c8a24a;--gold-l:#e6c877;--gold-d:#a8843a;--text:#e9e6e0;--smoke:#a5a09a;--line:rgba(200,162,74,.2)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--ink);color:var(--text);line-height:1.65;font-weight:300}
+h1,h2,h3{font-family:'Oswald',sans-serif;color:#fff;font-weight:600;line-height:1.1;text-transform:uppercase;letter-spacing:.5px}
+.display{font-family:'Bebas Neue',sans-serif;letter-spacing:1px;font-weight:400}
+a{text-decoration:none;color:inherit}img{display:block;max-width:100%}
+.wrap{max-width:1160px;margin:0 auto;padding:0 26px}
+.gold{color:var(--gold)}
+.btn{display:inline-block;padding:13px 30px;border-radius:3px;font-family:'Oswald';font-weight:500;letter-spacing:1.5px;font-size:14px;text-transform:uppercase;transition:.25s;cursor:pointer;border:1px solid transparent}
+.btn-gold{background:var(--gold);color:#161200}.btn-gold:hover{background:var(--gold-l)}
+.btn-line{border-color:var(--gold);color:var(--gold)}.btn-line:hover{background:var(--gold);color:#161200}
+.ribbon{position:fixed;left:0;top:0;z-index:99;background:var(--gold);color:#161200;font-family:'Oswald';font-weight:600;font-size:11px;letter-spacing:1px;padding:6px 14px;border-bottom-right-radius:8px}
+.back{position:fixed;right:16px;bottom:16px;z-index:99;background:var(--coal)}
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(12,12,12,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{font-family:'Bebas Neue';font-size:32px;color:#fff;letter-spacing:2px;line-height:.9}
+.logo b{color:var(--gold)}
+.logo small{display:block;font-family:'Oswald';font-size:9px;letter-spacing:4px;color:var(--smoke);text-transform:uppercase;font-weight:400}
+.nav-links{display:flex;gap:30px;font-family:'Oswald';font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--smoke)}
+.nav-links a:hover{color:var(--gold)}
+.nav-tools{display:flex;align-items:center;gap:16px}
+.burger{display:none;background:none;border:0;color:var(--gold);font-size:26px;cursor:pointer}
+/* hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#0c0c0c,#161311)}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 22px,rgba(200,162,74,.03) 22px,rgba(200,162,74,.03) 24px);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;padding:86px 26px}
+.eyebrow{font-family:'Oswald';font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:34px;height:1px;background:var(--gold)}
+.hero h1{font-family:'Bebas Neue';font-size:clamp(46px,7vw,88px);letter-spacing:1px;color:#fff;margin-bottom:20px;text-transform:none}
+.hero h1 span{color:var(--gold)}
+.hero p{max-width:440px;font-size:17px;color:var(--smoke);margin-bottom:30px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-img{position:relative}
+.hero-img img{border-radius:6px;box-shadow:0 30px 60px rgba(0,0,0,.6);border:1px solid var(--line)}
+.hero-chip{position:absolute;bottom:20px;left:-16px;background:var(--card);padding:14px 20px;border-radius:6px;box-shadow:0 12px 30px rgba(0,0,0,.5);font-size:13px;border:1px solid var(--line)}
+.hero-chip b{font-family:'Bebas Neue';color:var(--gold);font-size:24px;display:block;letter-spacing:1px}
+/* strip benefícios */
+.strip{background:var(--gold);color:#161200}
+.strip .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:16px 26px;font-family:'Oswald';font-weight:500;letter-spacing:1.5px;text-transform:uppercase;font-size:12px}
+/* sections */
+section{padding:88px 0}
+.head{text-align:center;max-width:620px;margin:0 auto 54px}
+.head .eyebrow{justify-content:center}.head .eyebrow::after{content:'';width:34px;height:1px;background:var(--gold)}
+.head h2{font-family:'Bebas Neue';font-size:clamp(34px,5vw,56px);letter-spacing:1px;text-transform:none}
+.head p{color:var(--smoke);margin-top:10px}
+.grid{display:grid;gap:24px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:1fr 1fr}
+/* serviços */
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 60px;max-width:820px;margin:0 auto}
+.svc-row{display:flex;align-items:baseline;gap:12px;padding:15px 0;border-bottom:1px dashed var(--line)}
+.svc-row .n{font-family:'Oswald';font-weight:500;color:#fff;font-size:17px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.svc-row .dots{flex:1;border-bottom:1px dotted #3a3733;transform:translateY(-4px)}
+.svc-row .p{font-family:'Bebas Neue';color:var(--gold);font-size:22px;letter-spacing:1px;white-space:nowrap}
+.svc-note{text-align:center;color:var(--smoke);font-size:13px;margin-top:26px}
+/* assinaturas */
+.assina{background:var(--coal)}
+.plan{background:var(--card);border-radius:8px;padding:36px 28px;text-align:center;border:1px solid var(--line);position:relative}
+.plan.top{border-color:var(--gold);box-shadow:0 20px 50px rgba(200,162,74,.12)}
+.plan h3{font-family:'Bebas Neue';font-size:30px;letter-spacing:1px;text-transform:none;color:#fff}
+.plan .val{font-family:'Bebas Neue';font-size:52px;color:var(--gold);margin:8px 0;letter-spacing:1px}
+.plan .val span{font-size:15px;font-family:'Inter';color:var(--smoke)}
+.plan ul{list-style:none;text-align:left;margin:22px 0;font-size:15px;color:var(--text)}
+.plan li{padding:8px 0;border-bottom:1px dashed rgba(255,255,255,.06);display:flex;gap:8px}
+.plan li::before{content:'✓';color:var(--gold);font-weight:700}
+.badge-top{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:#161200;font-family:'Oswald';font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;font-weight:600}
+/* equipe */
+.units{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.unit{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.unit-h{background:var(--coal2);padding:16px 20px;border-bottom:1px solid var(--line)}
+.unit-h h3{font-family:'Bebas Neue';font-size:24px;letter-spacing:1px;text-transform:none;color:var(--gold)}
+.barber{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.04)}
+.barber:last-child{border-bottom:0}
+.barber img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--gold)}
+.barber .role{font-size:12px;color:var(--smoke);text-transform:uppercase;letter-spacing:1px}
+/* diferencial */
+.merece{background:linear-gradient(180deg,#141311,#0c0c0c);text-align:center}
+.merece h2{font-family:'Bebas Neue';font-size:clamp(40px,6vw,72px);color:#fff;letter-spacing:1px;text-transform:none}
+.merece .sub{color:var(--gold);font-family:'Oswald';letter-spacing:3px;text-transform:uppercase;font-size:14px;margin-top:6px}
+.perks{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:44px}
+.perk{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:24px 16px}
+.perk .ico{font-size:28px;margin-bottom:10px}
+.perk b{font-family:'Oswald';font-weight:500;color:#fff;display:block;font-size:14px;text-transform:uppercase;letter-spacing:.5px}
+/* depoimentos */
+.depo{background:var(--coal)}
+.depo-track{position:relative;max-width:760px;margin:0 auto;text-align:center;min-height:200px}
+.depo-item{display:none}.depo-item.on{display:block}
+.stars{color:var(--gold);letter-spacing:4px;font-size:20px}
+.depo-q{font-family:'Oswald';font-weight:400;font-style:italic;font-size:clamp(20px,2.6vw,28px);color:#fff;margin:16px auto 18px;line-height:1.5;text-transform:none}
+.depo-who{color:var(--gold);font-family:'Oswald';letter-spacing:2px;text-transform:uppercase;font-size:13px}
+.depo-dots{display:flex;gap:10px;justify-content:center;margin-top:30px}
+.depo-dots button{width:11px;height:11px;border-radius:50%;border:1px solid var(--gold);background:none;cursor:pointer;padding:0}
+.depo-dots button.on{background:var(--gold)}
+/* unidades / localização */
+.loc-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:30px}
+.loc-card h3{font-family:'Bebas Neue';font-size:28px;letter-spacing:1px;text-transform:none;color:#fff;margin-bottom:14px}
+.loc-card p{color:var(--smoke);margin-bottom:6px}
+.loc-card .lbl{color:var(--gold);font-family:'Oswald';text-transform:uppercase;letter-spacing:1px;font-size:12px}
+.loc-card .btn{margin-top:18px}
+/* agendamento */
+.agenda .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:50px;align-items:center}
+.form{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:34px}
+.form label{font-family:'Oswald';font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);display:block;margin:14px 0 6px}
+.form input,.form select{width:100%;padding:13px;border:1px solid #3a3733;border-radius:4px;background:var(--coal);color:var(--text);font-family:'Inter'}
+.form input:focus,.form select:focus{outline:none;border-color:var(--gold)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+/* footer */
+.footer{background:#080808;color:var(--smoke);padding:56px 0 30px;font-size:14px;border-top:1px solid var(--line)}
+.footer .grid{grid-template-columns:2fr 1fr 1fr}
+.footer h4{font-family:'Oswald';color:#fff;margin-bottom:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px}
+.footer a:hover{color:var(--gold)}
+@media(max-width:860px){
+  .hero .wrap,.agenda .wrap{grid-template-columns:1fr}
+  .g3,.footer .grid,.units{grid-template-columns:1fr}
+  .g2{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr;gap:0}
+  .perks{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}.nav-links.open{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;background:var(--coal);padding:20px 26px;gap:18px;border-bottom:1px solid var(--line)}
+  .burger{display:block}
+}
+</style>
+</head>
+<body>
+<div class="ribbon">MODELO DEMONSTRATIVO · Kria Web</div>
+<a href="../index.html#galeria" class="btn btn-line back">← Galeria</a>
+
+<nav class="nav"><div class="wrap">
+  <div class="logo">ESTILO <b>R</b><small>barbearia por assinatura</small></div>
+  <div class="nav-links" id="navLinks">
+    <a href="#inicio">Início</a><a href="#assinaturas">Assinaturas</a><a href="#servicos">Serviços</a><a href="#equipe">Equipe</a><a href="#unidades">Unidades</a>
+  </div>
+  <div class="nav-tools">
+    <a href="#agenda" class="btn btn-gold">Agendar</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</div></nav>
+
+<header class="hero" id="inicio"><div class="wrap">
+  <div>
+    <div class="eyebrow">Taboão da Serra · Embu das Artes · SP</div>
+    <h1>Barbearia de shopping <span>pertinho de você</span>.</h1>
+    <p>Corte, barba e visagismo pra homem exigente — ambiente climatizado, toalha quente e aquele café. Assine o plano VIP e nunca mais fique sem horário.</p>
+    <div class="hero-actions"><a href="#agenda" class="btn btn-gold">Agendar Taboão</a><a href="#unidades" class="btn btn-line">Agendar Pirajussara</a></div>
+  </div>
+  <div class="hero-img">
+    <img src="https://placehold.co/560x600/1d1d1d/c8a24a?text=Estilo+R" alt="Ambiente da barbearia Estilo R">
+    <div class="hero-chip">⭐ 4,9 no Google<b>+ de 9.000 cortes</b>3 unidades em SP</div>
+  </div>
+</div></header>
+
+<div class="strip"><div class="wrap"><span>📶 Wi-Fi liberado</span><span>❄ Climatizado</span><span>🔥 Toalhas aquecidas</span><span>🍺 Frigobar</span><span>📱 Agendamento no app</span></div></div>
+
+<!-- SERVIÇOS -->
+<section id="servicos"><div class="wrap">
+  <div class="head"><div class="eyebrow">Tabela</div><h2>Serviços &amp; Valores</h2><p>Preço justo, mão de barbeiro profissional. Combos saem ainda mais em conta no plano.</p></div>
+  <div class="svc-grid">
+    <div class="svc-row"><span class="n">Corte</span><span class="dots"></span><span class="p">R$ 45 / 35</span></div>
+    <div class="svc-row"><span class="n">Barba</span><span class="dots"></span><span class="p">R$ 10</span></div>
+    <div class="svc-row"><span class="n">Bigode</span><span class="dots"></span><span class="p">R$ 10</span></div>
+    <div class="svc-row"><span class="n">Pézinho</span><span class="dots"></span><span class="p">R$ 10</span></div>
+    <div class="svc-row"><span class="n">Sobrancelha</span><span class="dots"></span><span class="p">R$ 10</span></div>
+    <div class="svc-row"><span class="n">Pigmentação</span><span class="dots"></span><span class="p">R$ 20</span></div>
+    <div class="svc-row"><span class="n">Hidratação</span><span class="dots"></span><span class="p">R$ 20</span></div>
+    <div class="svc-row"><span class="n">Luzes</span><span class="dots"></span><span class="p">a partir R$ 100</span></div>
+    <div class="svc-row"><span class="n">Tintura</span><span class="dots"></span><span class="p">a partir R$ 40</span></div>
+    <div class="svc-row"><span class="n">Alisamento</span><span class="dots"></span><span class="p">a partir R$ 40</span></div>
+    <div class="svc-row"><span class="n">Progressiva</span><span class="dots"></span><span class="p">a partir R$ 60</span></div>
+    <div class="svc-row"><span class="n">Reconstrução</span><span class="dots"></span><span class="p">a partir R$ 40</span></div>
+  </div>
+  <p class="svc-note">Valores de referência. Corte R$ 35 para assinantes e dias promocionais.</p>
+</div></section>
+
+<!-- ASSINATURAS -->
+<section id="assinaturas" class="assina"><div class="wrap">
+  <div class="head"><div class="eyebrow">Clube Estilo R</div><h2>Barbearia por assinatura</h2><p>Pague um valor fixo por mês e venha quantas vezes quiser. Sem fila, com prioridade.</p></div>
+  <div class="grid g3">
+    <div class="plan"><h3>Start</h3><div class="val">R$ 89<span>/mês</span></div><ul><li>2 cortes no mês</li><li>Pézinho liberado</li><li>10% off nos extras</li></ul><a href="#agenda" class="btn btn-line" style="width:100%">Assinar</a></div>
+    <div class="plan top"><span class="badge-top">Mais escolhido</span><h3>VIP</h3><div class="val">R$ 149<span>/mês</span></div><ul><li>Cortes ilimitados</li><li>Barba toda semana</li><li>Sobrancelha + pézinho</li><li>Prioridade no horário</li></ul><a href="#agenda" class="btn btn-gold" style="width:100%">Assinar VIP</a></div>
+    <div class="plan"><h3>Infantil</h3><div class="val">R$ 69<span>/mês</span></div><ul><li>2 cortes no mês</li><li>Cadeira kids</li><li>Atendimento paciente</li></ul><a href="#agenda" class="btn btn-line" style="width:100%">Assinar</a></div>
+  </div>
+</div></section>
+
+<!-- EQUIPE / UNIDADES -->
+<section id="equipe"><div class="wrap">
+  <div class="head"><div class="eyebrow">Time</div><h2>Nossos barbeiros</h2><p>Três unidades, um padrão só: capricho do começo ao fim.</p></div>
+  <div class="units">
+    <div class="unit">
+      <div class="unit-h"><h3>Taboão · Centro</h3></div>
+      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=R" alt=""><div><b>Rian</b><div class="role">Barbeiro</div></div></div>
+      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=V" alt=""><div><b>Vinicius</b><div class="role">Barbeiro</div></div></div>
+      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=A" alt=""><div><b>Arthur</b><div class="role">Barbeiro</div></div></div>
+    </div>
+    <div class="unit">
+      <div class="unit-h"><h3>Pirajussara I</h3></div>
+      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=J" alt=""><div><b>Joabe</b><div class="role">Barbeiro</div></div></div>
+      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=L" alt=""><div><b>Lucas</b><div class="role">Barbeiro</div></div></div>
+      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=C" alt=""><div><b>Caio</b><div class="role">Barbeiro</div></div></div>
+    </div>
+    <div class="unit">
+      <div class="unit-h"><h3>Pirajussara II</h3></div>
+      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=V" alt=""><div><b>Victor</b><div class="role">Barbeiro</div></div></div>
+      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=E" alt=""><div><b>Eliabe</b><div class="role">Barbeiro</div></div></div>
+      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=M" alt=""><div><b>Matheus</b><div class="role">Barbeiro</div></div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- VOCÊ MERECE O MELHOR -->
+<section class="merece"><div class="wrap">
+  <h2>Você merece o melhor</h2>
+  <div class="sub">Barbearia para homens exigentes</div>
+  <div class="perks">
+    <div class="perk"><div class="ico">📶</div><b>Wi-Fi liberado</b></div>
+    <div class="perk"><div class="ico">❄</div><b>Climatizado</b></div>
+    <div class="perk"><div class="ico">🔥</div><b>Toalha quente</b></div>
+    <div class="perk"><div class="ico">🍺</div><b>Frigobar</b></div>
+    <div class="perk"><div class="ico">📱</div><b>Agenda no app</b></div>
+  </div>
+</div></section>
+
+<!-- DEPOIMENTOS -->
+<section class="depo"><div class="wrap">
+  <div class="head"><div class="eyebrow">Google Reviews</div><h2>O que dizem os clientes</h2></div>
+  <div class="depo-track" id="depoTrack">
+    <div class="depo-item on"><div class="stars">★★★★★</div><p class="depo-q">"Parabéns a toda equipe da Estilo R. Atendimento excelente, ambiente confortável e o corte sempre no capricho."</p><div class="depo-who">— Tais Bomfim</div></div>
+    <div class="depo-item"><div class="stars">★★★★★</div><p class="depo-q">"Melhor barbearia. Agora com o plano VIP vou sempre que quero e não pago a mais por isso."</p><div class="depo-who">— Marcos Paulo</div></div>
+    <div class="depo-item"><div class="stars">★★★★★</div><p class="depo-q">"Profissionais muito competentes e atenciosos. Saio de lá sempre satisfeito com o resultado."</p><div class="depo-who">— Bruno Costa</div></div>
+  </div>
+  <div class="depo-dots" id="depoDots">
+    <button class="on" aria-label="Depoimento 1"></button>
+    <button aria-label="Depoimento 2"></button>
+    <button aria-label="Depoimento 3"></button>
+  </div>
+</div></section>
+
+<!-- UNIDADES / LOCALIZAÇÃO -->
+<section id="unidades"><div class="wrap">
+  <div class="head"><div class="eyebrow">Onde estamos</div><h2>Nossas unidades</h2></div>
+  <div class="grid g2">
+    <div class="loc-card">
+      <h3>Unidade Taboão</h3>
+      <p class="lbl">Endereço</p><p>Av. José Maciel, 501 · Jardim Maria Rosa · Taboão da Serra/SP</p>
+      <p class="lbl" style="margin-top:12px">Horário</p><p>Seg a Sex 9h–20h · Sábado 9h–19h</p>
+      <a href="#agenda" class="btn btn-gold">Agendar Taboão</a>
+    </div>
+    <div class="loc-card">
+      <h3>Unidade Pirajussara</h3>
+      <p class="lbl">Endereço</p><p>Rua Heitor Vila Lobos, 650 · Jardim Castilho · Embu das Artes/SP</p>
+      <p class="lbl" style="margin-top:12px">Horário</p><p>Seg a Sex 9h–20h20 · Sábado 9h–19h20</p>
+      <a href="#agenda" class="btn btn-gold">Agendar Pirajussara</a>
+    </div>
+  </div>
+</div></section>
+
+<!-- AGENDAMENTO -->
+<section id="agenda" class="agenda"><div class="wrap">
+  <div>
+    <div class="eyebrow">Agendamento</div>
+    <h2 style="font-family:'Bebas Neue';font-size:48px;text-transform:none;letter-spacing:1px;margin-bottom:16px">Bora marcar seu horário?</h2>
+    <p style="color:var(--smoke)">Escolhe a unidade, o serviço e o melhor dia. A gente confirma pelo WhatsApp na hora. Assinante tem prioridade na agenda.</p>
+    <p style="margin-top:20px;font-size:15px">
+      <span class="gold">📍</span> 3 unidades · Taboão &amp; Pirajussara<br>
+      <span class="gold">🕐</span> Seg a Sáb · a partir das 9h<br>
+      <span class="gold">📱</span> WhatsApp: (11) 90000-0000
+    </p>
+  </div>
+  <form class="form" onsubmit="return false">
+    <label>Seu nome</label><input placeholder="Como podemos te chamar?">
+    <label>Unidade</label>
+    <select><option>Taboão · Centro</option><option>Pirajussara I</option><option>Pirajussara II</option></select>
+    <label>Serviço</label>
+    <select><option>Corte</option><option>Corte + Barba</option><option>Barba</option><option>Sobrancelha / Pézinho</option><option>Química (luzes, progressiva…)</option><option>Quero assinar o plano</option></select>
+    <div class="row2"><div><label>Dia</label><input type="date"></div><div><label>Horário</label><input type="time"></div></div>
+    <label>WhatsApp</label><input placeholder="(11) 90000-0000">
+    <button class="btn btn-gold" style="width:100%;margin-top:22px">Solicitar horário</button>
+  </form>
+</div></section>
+
+<!-- RODAPÉ -->
+<footer class="footer" id="contato"><div class="wrap grid">
+  <div><div class="logo" style="color:#fff">ESTILO <b>R</b><small>barbearia por assinatura</small></div><p style="margin-top:14px;max-width:320px">Barbearia de shopping para o homem exigente. Corte, barba e química com padrão profissional em Taboão e Pirajussara.</p></div>
+  <div><h4>Unidades</h4><p>Taboão da Serra/SP<br>Embu das Artes/SP<br>São Paulo · Brasil</p></div>
+  <div><h4>Siga</h4><p><a href="#">Instagram @estilor</a><br><a href="#">Facebook</a><br><a href="#">WhatsApp</a></p></div>
+</div><div class="wrap" style="margin-top:34px;opacity:.55;font-size:12px">© 2026 Estilo R — conteúdo fictício criado como demonstração no Kria Web.</div></footer>
+
+<script>
+// menu mobile
+document.getElementById('burger').addEventListener('click',function(){
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('#navLinks a').forEach(function(a){
+  a.addEventListener('click',function(){document.getElementById('navLinks').classList.remove('open');});
+});
+// carrossel depoimentos
+(function(){
+  var items=document.querySelectorAll('.depo-item');
+  var dots=document.querySelectorAll('#depoDots button');
+  var i=0;
+  function show(n){
+    items[i].classList.remove('on');dots[i].classList.remove('on');
+    i=(n+items.length)%items.length;
+    items[i].classList.add('on');dots[i].classList.add('on');
+  }
+  dots.forEach(function(d,idx){d.addEventListener('click',function(){show(idx);});});
+  setInterval(function(){show(i+1);},5000);
+})();
+</script>
+</body></html>

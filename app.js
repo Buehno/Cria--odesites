@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         salao: 699,
         restaurante: 899,
         empresa: 999,
+        barbearia: 799,
         exclusivo: 1499
     };
 
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         salao: 5,
         restaurante: 7,
         empresa: 7,
+        barbearia: 6,
         exclusivo: 10
     };
 
