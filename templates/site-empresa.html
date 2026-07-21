@@ -47,7 +47,9 @@ section{padding:84px 0}
 .grid{display:grid;gap:24px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:1fr 1fr}.g4{grid-template-columns:repeat(4,1fr)}
 .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px;transition:.25s}
 .card:hover{border-color:#bfe0d5;box-shadow:0 16px 40px rgba(14,42,74,.08);transform:translateY(-4px)}
-.ic{width:48px;height:48px;border-radius:12px;background:#dff2ec;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.ic{width:48px;height:48px;border-radius:12px;background:#dff2ec;display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--emerald-d)}
+.ic svg{width:24px;height:24px}
+.icn{flex-shrink:0;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .card h3{font-size:19px;margin-bottom:8px}
 .card p{color:var(--slate);font-size:15px}
 /* institucional split */
@@ -96,12 +98,12 @@ section{padding:84px 0}
 
 <header class="hero"><div class="wrap">
   <div>
-    <span class="pill">● Consultoria &amp; Projetos sob medida</span>
+    <span class="pill">Consultoria &amp; Projetos sob medida</span>
     <h1>A gente organiza o que trava o seu negócio.</h1>
     <p>Da estratégia à execução: processos, tecnologia e gestão para empresas e instituições que querem crescer sem perder o controle.</p>
     <div class="hero-actions"><a href="#contato" class="btn btn-em">Agendar diagnóstico gratuito</a><a href="#cases" class="btn btn-line">Ver cases</a></div>
   </div>
-  <div class="hero-card"><img src="https://placehold.co/620x440/0e2a4a/12a37f?text=Equipe+V%C3%A9rtice" alt="Equipe"></div>
+  <div class="hero-card"><img src="https://picsum.photos/seed/vertice-equipe-reuniao/620/440" alt="Equipe Vértice em reunião"></div>
 </div></header>
 
 <div class="logos"><div class="wrap">
@@ -110,13 +112,12 @@ section{padding:84px 0}
 </div></div>
 
 <section id="empresa" class="split"><div class="wrap">
-  <img src="https://placehold.co/560x460/eef4f9/0e2a4a?text=Nossa+hist%C3%B3ria" alt="" style="border-radius:16px;border:1px solid var(--line)">
+  <img src="https://picsum.photos/seed/vertice-historia-escritorio/560/460" alt="História da Vértice" style="border-radius:16px;border:1px solid var(--line)">
   <div>
-    <div class="kick">Quem somos</div>
     <h2 style="font-size:34px">18 anos ajudando negócios a saírem do caos operacional</h2>
     <p style="color:var(--slate);margin-top:16px;font-size:16px">A Vértice começou como uma consultoria de dois sócios numa sala em Santos. Hoje somos um time de 24 pessoas que já rodou projeto em indústria, escola, comércio e setor público. Continuamos com a mesma obsessão do primeiro dia: resolver o problema de verdade, não empurrar relatório.</p>
     <ul>
-      <li><span class="ck">✓</span> Diagnóstico honesto — se não for o caso, a gente fala</li>
+      <li><span class="ck">✓</span> Diagnóstico honesto. Se não for o caso, a gente fala</li>
       <li><span class="ck">✓</span> Time sênior do início ao fim do projeto</li>
       <li><span class="ck">✓</span> Entrega em fases, com resultado medido</li>
     </ul>
@@ -126,12 +127,12 @@ section{padding:84px 0}
 <section id="servicos"><div class="wrap">
   <div class="head"><div class="kick">O que fazemos</div><h2>Serviços para tirar o negócio do lugar</h2></div>
   <div class="grid g3">
-    <div class="card"><div class="ic">📊</div><h3>Gestão &amp; Processos</h3><p>Mapeamos, enxugamos e documentamos a operação. Sua equipe para de apagar incêndio.</p></div>
-    <div class="card"><div class="ic">💻</div><h3>Tecnologia sob medida</h3><p>Sistemas, integrações e automações que conversam com as ferramentas que você já usa.</p></div>
-    <div class="card"><div class="ic">🎓</div><h3>Projetos institucionais</h3><p>Da escola à indústria: planejamento, captação e prestação de contas com transparência.</p></div>
-    <div class="card"><div class="ic">📈</div><h3>Planejamento estratégico</h3><p>Metas claras, indicadores que fazem sentido e acompanhamento trimestral com a diretoria.</p></div>
-    <div class="card"><div class="ic">🤝</div><h3>Estruturação comercial</h3><p>Funil, CRM e time de vendas com processo — previsibilidade em vez de sorte.</p></div>
-    <div class="card"><div class="ic">🗂️</div><h3>Portfólio &amp; presença digital</h3><p>Site institucional, materiais e apresentação profissional para você ser levado a sério.</p></div>
+    <div class="card"><div class="ic"><svg class="icn" viewBox="0 0 24 24"><path d="M5 20V11M12 20V5M19 20v-6"/><path d="M3 20h18"/></svg></div><h3>Gestão &amp; Processos</h3><p>Mapeamos, enxugamos e documentamos a operação. Sua equipe para de apagar incêndio.</p></div>
+    <div class="card"><div class="ic"><svg class="icn" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 20h20"/></svg></div><h3>Tecnologia sob medida</h3><p>Sistemas, integrações e automações que conversam com as ferramentas que você já usa.</p></div>
+    <div class="card"><div class="ic"><svg class="icn" viewBox="0 0 24 24"><path d="M12 5 22 9l-10 4L2 9z"/><path d="M6 11v4c0 1.2 2.7 2.5 6 2.5s6-1.3 6-2.5v-4"/></svg></div><h3>Projetos institucionais</h3><p>Da escola à indústria: planejamento, captação e prestação de contas com transparência.</p></div>
+    <div class="card"><div class="ic"><svg class="icn" viewBox="0 0 24 24"><path d="M4 16l5-5 4 4 7-8"/><path d="M20 7v4h-4"/></svg></div><h3>Planejamento estratégico</h3><p>Metas claras, indicadores que fazem sentido e acompanhamento trimestral com a diretoria.</p></div>
+    <div class="card"><div class="ic"><svg class="icn" viewBox="0 0 24 24"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></svg></div><h3>Estruturação comercial</h3><p>Funil, CRM e time de vendas com processo, previsibilidade em vez de sorte.</p></div>
+    <div class="card"><div class="ic"><svg class="icn" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9.5h18"/></svg></div><h3>Portfólio &amp; presença digital</h3><p>Site institucional, materiais e apresentação profissional para você ser levado a sério.</p></div>
   </div>
 </div></section>
 
@@ -143,18 +144,17 @@ section{padding:84px 0}
 </div></section>
 
 <section id="cases" class="split"><div class="wrap" style="display:block">
-  <div class="head"><div class="kick">Portfólio</div><h2>Alguns cases recentes</h2></div>
+  <div class="head"><h2>Alguns cases recentes</h2></div>
   <div class="grid g3">
-    <div class="case"><img src="https://placehold.co/440x260/0e2a4a/ffffff?text=Ind%C3%BAstria+Fibra+Log" alt=""><div class="b"><span class="tg">Indústria · Logística</span><h3>Redução de 30% no tempo de expedição</h3><p style="color:var(--slate);font-size:14px">Reorganização do fluxo de estoque e novo sistema de picking.</p><div class="res">↳ ROI em 5 meses</div></div></div>
-    <div class="case"><img src="https://placehold.co/440x260/12a37f/ffffff?text=Col%C3%A9gio+Horizonte" alt=""><div class="b"><span class="tg">Educação</span><h3>Gestão acadêmica e portal do aluno</h3><p style="color:var(--slate);font-size:14px">Matrícula online e prestação de contas para 1.200 famílias.</p><div class="res">↳ 40h/mês economizadas</div></div></div>
-    <div class="case"><img src="https://placehold.co/440x260/0a1f38/12a37f?text=Cl%C3%ADnica+Vitta" alt=""><div class="b"><span class="tg">Saúde</span><h3>Estruturação comercial da rede</h3><p style="color:var(--slate);font-size:14px">CRM, funil e treinamento de 3 unidades.</p><div class="res">↳ +22% em novos pacientes</div></div></div>
+    <div class="case"><img src="https://picsum.photos/seed/vertice-case-fibralog/440/260" alt="Case Fibra Log"><div class="b"><span class="tg">Indústria · Logística</span><h3>Redução de 30% no tempo de expedição</h3><p style="color:var(--slate);font-size:14px">Reorganização do fluxo de estoque e novo sistema de picking.</p><div class="res">ROI em 5 meses</div></div></div>
+    <div class="case"><img src="https://picsum.photos/seed/vertice-case-horizonte/440/260" alt="Case Colégio Horizonte"><div class="b"><span class="tg">Educação</span><h3>Gestão acadêmica e portal do aluno</h3><p style="color:var(--slate);font-size:14px">Matrícula online e prestação de contas para 1.200 famílias.</p><div class="res">40h/mês economizadas</div></div></div>
+    <div class="case"><img src="https://picsum.photos/seed/vertice-case-vitta/440/260" alt="Case Clínica Vitta"><div class="b"><span class="tg">Saúde</span><h3>Estruturação comercial da rede</h3><p style="color:var(--slate);font-size:14px">CRM, funil e treinamento de 3 unidades.</p><div class="res">+22% em novos pacientes</div></div></div>
   </div>
 </div></section>
 
 <section id="contato" class="cta"><div class="wrap">
-  <div class="kick" style="color:#d3f3ea">Vamos conversar</div>
   <h2 style="font-size:34px">Comece com um diagnóstico gratuito</h2>
-  <p style="max-width:520px;margin:12px auto 0;color:#e6fbf4">30 minutos com um consultor sênior para entender seu momento — sem compromisso e sem enrolação.</p>
+  <p style="max-width:520px;margin:12px auto 0;color:#e6fbf4">30 minutos com um consultor sênior para entender seu momento, sem compromisso e sem enrolação.</p>
   <form class="form" onsubmit="return false">
     <div class="row2"><div><label>Nome</label><input placeholder="Seu nome"></div><div><label>Empresa / Instituição</label><input placeholder="Nome da organização"></div></div>
     <div class="row2"><div><label>E-mail</label><input type="email" placeholder="voce@empresa.com.br"></div><div><label>Área</label><select><option>Indústria</option><option>Comércio</option><option>Educação</option><option>Saúde</option><option>Setor público</option><option>Outra</option></select></div></div>
@@ -166,7 +166,7 @@ section{padding:84px 0}
 <footer class="footer"><div class="wrap grid">
   <div><div class="logo" style="color:#fff"><span class="mk"></span>Vértice</div><p style="margin-top:14px;max-width:280px;color:#9fb6cc">Consultoria e projetos sob medida para empresas e instituições. Desde 2008.</p></div>
   <div><h4>Empresa</h4><p><a href="#empresa">Sobre nós</a><br><a href="#servicos">Serviços</a><br><a href="#cases">Cases</a></p></div>
-  <div><h4>Contato</h4><p>Av. Ana Costa, 120 — Santos/SP<br>(13) 3000-0000<br>contato@vertice.com.br</p></div>
+  <div><h4>Contato</h4><p>Av. Ana Costa, 120 · Santos/SP<br>(13) 3000-0000<br>contato@vertice.com.br</p></div>
   <div><h4>Siga</h4><p><a href="#">LinkedIn</a><br><a href="#">Instagram</a></p></div>
-</div><div class="wrap" style="margin-top:34px;opacity:.6;font-size:12px">© 2026 Vértice Consultoria — conteúdo fictício criado como demonstração no Kria Web.</div></footer>
+</div><div class="wrap" style="margin-top:34px;opacity:.6;font-size:12px">© 2026 Vértice Consultoria. Conteúdo fictício criado como demonstração no Kria Web.</div></footer>
 </body></html>

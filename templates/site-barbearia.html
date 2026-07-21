@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Estilo R · Barbearia por Assinatura — Taboão &amp; Pirajussara, SP</title>
+<title>Estilo R · Barbearia por Assinatura · Taboão e Pirajussara, SP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -32,8 +32,10 @@ a{text-decoration:none;color:inherit}img{display:block;max-width:100%}
 .burger{display:none;background:none;border:0;color:var(--gold);font-size:26px;cursor:pointer}
 /* hero */
 .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#0c0c0c,#161311)}
-.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 22px,rgba(200,162,74,.03) 22px,rgba(200,162,74,.03) 24px);pointer-events:none}
-.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;padding:86px 26px}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:grayscale(.55) sepia(.35) saturate(1.15) brightness(.72) contrast(1.05)}
+.hero-tint{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(12,12,12,.55),rgba(22,19,17,.82)),linear-gradient(115deg,rgba(200,162,74,.28),rgba(12,12,12,.15) 60%)}
+.hero::before{content:'';position:absolute;inset:0;z-index:2;background:repeating-linear-gradient(135deg,transparent,transparent 22px,rgba(200,162,74,.03) 22px,rgba(200,162,74,.03) 24px);pointer-events:none}
+.hero .wrap{position:relative;z-index:3;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;padding:86px 26px}
 .eyebrow{font-family:'Oswald';font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:10px}
 .eyebrow::before{content:'';width:34px;height:1px;background:var(--gold)}
 .hero h1{font-family:'Bebas Neue';font-size:clamp(46px,7vw,88px);letter-spacing:1px;color:#fff;margin-bottom:20px;text-transform:none}
@@ -47,6 +49,10 @@ a{text-decoration:none;color:inherit}img{display:block;max-width:100%}
 /* strip benefícios */
 .strip{background:var(--gold);color:#161200}
 .strip .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:16px 26px;font-family:'Oswald';font-weight:500;letter-spacing:1.5px;text-transform:uppercase;font-size:12px}
+.strip span{display:inline-flex;align-items:center;gap:8px}
+.strip svg{width:17px;height:17px}
+.icn{flex-shrink:0;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none}}
 /* sections */
 section{padding:88px 0}
 .head{text-align:center;max-width:620px;margin:0 auto 54px}
@@ -87,7 +93,8 @@ section{padding:88px 0}
 .merece .sub{color:var(--gold);font-family:'Oswald';letter-spacing:3px;text-transform:uppercase;font-size:14px;margin-top:6px}
 .perks{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:44px}
 .perk{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:24px 16px}
-.perk .ico{font-size:28px;margin-bottom:10px}
+.perk .ico{color:var(--gold);margin-bottom:12px;display:flex;justify-content:center}
+.perk .ico svg{width:30px;height:30px}
 .perk b{font-family:'Oswald';font-weight:500;color:#fff;display:block;font-size:14px;text-transform:uppercase;letter-spacing:.5px}
 /* depoimentos */
 .depo{background:var(--coal)}
@@ -107,6 +114,9 @@ section{padding:88px 0}
 .loc-card .btn{margin-top:18px}
 /* agendamento */
 .agenda .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:50px;align-items:center}
+.contact-list{display:flex;flex-direction:column;gap:12px}
+.contact-list span{display:flex;align-items:center;gap:12px}
+.contact-list svg{width:20px;height:20px;color:var(--gold);flex-shrink:0}
 .form{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:34px}
 .form label{font-family:'Oswald';font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);display:block;margin:14px 0 6px}
 .form input,.form select{width:100%;padding:13px;border:1px solid #3a3733;border-radius:4px;background:var(--coal);color:var(--text);font-family:'Inter'}
@@ -143,24 +153,35 @@ section{padding:88px 0}
   </div>
 </div></nav>
 
-<header class="hero" id="inicio"><div class="wrap">
+<header class="hero" id="inicio">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="https://placehold.co/1600x900/0c0c0c/1a1a1a">
+    <source src="barbearia-hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-tint"></div>
+  <div class="wrap">
   <div>
-    <div class="eyebrow">Taboão da Serra · Embu das Artes · SP</div>
+    <div class="eyebrow">Taboão da Serra · Embu das Artes</div>
     <h1>Barbearia de shopping <span>pertinho de você</span>.</h1>
-    <p>Corte, barba e visagismo pra homem exigente — ambiente climatizado, toalha quente e aquele café. Assine o plano VIP e nunca mais fique sem horário.</p>
+    <p>Corte, barba e visagismo pra homem exigente. Ambiente climatizado, toalha quente e aquele café. Assine o plano VIP e nunca mais fique sem horário.</p>
     <div class="hero-actions"><a href="#agenda" class="btn btn-gold">Agendar Taboão</a><a href="#unidades" class="btn btn-line">Agendar Pirajussara</a></div>
   </div>
   <div class="hero-img">
-    <img src="https://placehold.co/560x600/1d1d1d/c8a24a?text=Estilo+R" alt="Ambiente da barbearia Estilo R">
-    <div class="hero-chip">⭐ 4,9 no Google<b>+ de 9.000 cortes</b>3 unidades em SP</div>
+    <img src="https://picsum.photos/seed/estilor-barbearia-cadeira/560/600" alt="Ambiente da barbearia Estilo R">
+    <div class="hero-chip"><span style="color:var(--gold)">★</span> 4,9 no Google<b>+ de 9.000 cortes</b>3 unidades em SP</div>
   </div>
 </div></header>
 
-<div class="strip"><div class="wrap"><span>📶 Wi-Fi liberado</span><span>❄ Climatizado</span><span>🔥 Toalhas aquecidas</span><span>🍺 Frigobar</span><span>📱 Agendamento no app</span></div></div>
+<div class="strip"><div class="wrap">
+  <span><svg class="icn" viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r=".6"/></svg>Wi-Fi liberado</span>
+  <span><svg class="icn" viewBox="0 0 24 24"><path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9"/></svg>Climatizado</span>
+  <span><svg class="icn" viewBox="0 0 24 24"><path d="M13 3c.7 2.5-1.8 3.6-1.8 6.2A1.8 1.8 0 0 0 14.6 10c1.6 1.7 1.9 3.4 1.9 4.6a4.5 4.5 0 0 1-9 0c0-3.3 2.3-4.6 5.5-11.6z"/></svg>Toalhas aquecidas</span>
+  <span><svg class="icn" viewBox="0 0 24 24"><path d="M6 8h10v6a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z"/><path d="M16 9h2a2 2 0 0 1 0 4h-2"/></svg>Frigobar</span>
+  <span><svg class="icn" viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="18" rx="2"/><path d="M11 18h2"/></svg>Agendamento no app</span>
+</div></div>
 
 <!-- SERVIÇOS -->
 <section id="servicos"><div class="wrap">
-  <div class="head"><div class="eyebrow">Tabela</div><h2>Serviços &amp; Valores</h2><p>Preço justo, mão de barbeiro profissional. Combos saem ainda mais em conta no plano.</p></div>
+  <div class="head"><h2>Serviços &amp; Valores</h2><p>Preço justo, mão de barbeiro profissional. Combos saem ainda mais em conta no plano.</p></div>
   <div class="svc-grid">
     <div class="svc-row"><span class="n">Corte</span><span class="dots"></span><span class="p">R$ 45 / 35</span></div>
     <div class="svc-row"><span class="n">Barba</span><span class="dots"></span><span class="p">R$ 10</span></div>
@@ -190,25 +211,25 @@ section{padding:88px 0}
 
 <!-- EQUIPE / UNIDADES -->
 <section id="equipe"><div class="wrap">
-  <div class="head"><div class="eyebrow">Time</div><h2>Nossos barbeiros</h2><p>Três unidades, um padrão só: capricho do começo ao fim.</p></div>
+  <div class="head"><h2>Nossos barbeiros</h2><p>Três unidades, um padrão só: capricho do começo ao fim.</p></div>
   <div class="units">
     <div class="unit">
       <div class="unit-h"><h3>Taboão · Centro</h3></div>
-      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=R" alt=""><div><b>Rian</b><div class="role">Barbeiro</div></div></div>
-      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=V" alt=""><div><b>Vinicius</b><div class="role">Barbeiro</div></div></div>
-      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=A" alt=""><div><b>Arthur</b><div class="role">Barbeiro</div></div></div>
+      <div class="barber"><img src="https://picsum.photos/seed/barber-rian/96/96" alt="Rian, barbeiro"><div><b>Rian</b><div class="role">Barbeiro</div></div></div>
+      <div class="barber"><img src="https://picsum.photos/seed/barber-vinicius/96/96" alt="Vinicius, barbeiro"><div><b>Vinicius</b><div class="role">Barbeiro</div></div></div>
+      <div class="barber"><img src="https://picsum.photos/seed/barber-arthur/96/96" alt="Arthur, barbeiro"><div><b>Arthur</b><div class="role">Barbeiro</div></div></div>
     </div>
     <div class="unit">
       <div class="unit-h"><h3>Pirajussara I</h3></div>
-      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=J" alt=""><div><b>Joabe</b><div class="role">Barbeiro</div></div></div>
-      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=L" alt=""><div><b>Lucas</b><div class="role">Barbeiro</div></div></div>
-      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=C" alt=""><div><b>Caio</b><div class="role">Barbeiro</div></div></div>
+      <div class="barber"><img src="https://picsum.photos/seed/barber-joabe/96/96" alt="Joabe, barbeiro"><div><b>Joabe</b><div class="role">Barbeiro</div></div></div>
+      <div class="barber"><img src="https://picsum.photos/seed/barber-lucas/96/96" alt="Lucas, barbeiro"><div><b>Lucas</b><div class="role">Barbeiro</div></div></div>
+      <div class="barber"><img src="https://picsum.photos/seed/barber-caio/96/96" alt="Caio, barbeiro"><div><b>Caio</b><div class="role">Barbeiro</div></div></div>
     </div>
     <div class="unit">
       <div class="unit-h"><h3>Pirajussara II</h3></div>
-      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=V" alt=""><div><b>Victor</b><div class="role">Barbeiro</div></div></div>
-      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=E" alt=""><div><b>Eliabe</b><div class="role">Barbeiro</div></div></div>
-      <div class="barber"><img src="https://placehold.co/96x96/c8a24a/161200?text=M" alt=""><div><b>Matheus</b><div class="role">Barbeiro</div></div></div>
+      <div class="barber"><img src="https://picsum.photos/seed/barber-victor/96/96" alt="Victor, barbeiro"><div><b>Victor</b><div class="role">Barbeiro</div></div></div>
+      <div class="barber"><img src="https://picsum.photos/seed/barber-eliabe/96/96" alt="Eliabe, barbeiro"><div><b>Eliabe</b><div class="role">Barbeiro</div></div></div>
+      <div class="barber"><img src="https://picsum.photos/seed/barber-matheus/96/96" alt="Matheus, barbeiro"><div><b>Matheus</b><div class="role">Barbeiro</div></div></div>
     </div>
   </div>
 </div></section>
@@ -218,21 +239,21 @@ section{padding:88px 0}
   <h2>Você merece o melhor</h2>
   <div class="sub">Barbearia para homens exigentes</div>
   <div class="perks">
-    <div class="perk"><div class="ico">📶</div><b>Wi-Fi liberado</b></div>
-    <div class="perk"><div class="ico">❄</div><b>Climatizado</b></div>
-    <div class="perk"><div class="ico">🔥</div><b>Toalha quente</b></div>
-    <div class="perk"><div class="ico">🍺</div><b>Frigobar</b></div>
-    <div class="perk"><div class="ico">📱</div><b>Agenda no app</b></div>
+    <div class="perk"><div class="ico"><svg class="icn" viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r=".6"/></svg></div><b>Wi-Fi liberado</b></div>
+    <div class="perk"><div class="ico"><svg class="icn" viewBox="0 0 24 24"><path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9"/></svg></div><b>Climatizado</b></div>
+    <div class="perk"><div class="ico"><svg class="icn" viewBox="0 0 24 24"><path d="M13 3c.7 2.5-1.8 3.6-1.8 6.2A1.8 1.8 0 0 0 14.6 10c1.6 1.7 1.9 3.4 1.9 4.6a4.5 4.5 0 0 1-9 0c0-3.3 2.3-4.6 5.5-11.6z"/></svg></div><b>Toalha quente</b></div>
+    <div class="perk"><div class="ico"><svg class="icn" viewBox="0 0 24 24"><path d="M6 8h10v6a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z"/><path d="M16 9h2a2 2 0 0 1 0 4h-2"/></svg></div><b>Frigobar</b></div>
+    <div class="perk"><div class="ico"><svg class="icn" viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="18" rx="2"/><path d="M11 18h2"/></svg></div><b>Agenda no app</b></div>
   </div>
 </div></section>
 
 <!-- DEPOIMENTOS -->
 <section class="depo"><div class="wrap">
-  <div class="head"><div class="eyebrow">Google Reviews</div><h2>O que dizem os clientes</h2></div>
+  <div class="head"><h2>O que dizem os clientes</h2></div>
   <div class="depo-track" id="depoTrack">
-    <div class="depo-item on"><div class="stars">★★★★★</div><p class="depo-q">"Parabéns a toda equipe da Estilo R. Atendimento excelente, ambiente confortável e o corte sempre no capricho."</p><div class="depo-who">— Tais Bomfim</div></div>
-    <div class="depo-item"><div class="stars">★★★★★</div><p class="depo-q">"Melhor barbearia. Agora com o plano VIP vou sempre que quero e não pago a mais por isso."</p><div class="depo-who">— Marcos Paulo</div></div>
-    <div class="depo-item"><div class="stars">★★★★★</div><p class="depo-q">"Profissionais muito competentes e atenciosos. Saio de lá sempre satisfeito com o resultado."</p><div class="depo-who">— Bruno Costa</div></div>
+    <div class="depo-item on"><div class="stars">★★★★★</div><p class="depo-q">"Parabéns a toda equipe da Estilo R. Atendimento excelente, ambiente confortável e o corte sempre no capricho."</p><div class="depo-who">Tais Bomfim</div></div>
+    <div class="depo-item"><div class="stars">★★★★★</div><p class="depo-q">"Melhor barbearia. Agora com o plano VIP vou sempre que quero e não pago a mais por isso."</p><div class="depo-who">Marcos Paulo</div></div>
+    <div class="depo-item"><div class="stars">★★★★★</div><p class="depo-q">"Profissionais muito competentes e atenciosos. Saio de lá sempre satisfeito com o resultado."</p><div class="depo-who">Bruno Costa</div></div>
   </div>
   <div class="depo-dots" id="depoDots">
     <button class="on" aria-label="Depoimento 1"></button>
@@ -243,18 +264,18 @@ section{padding:88px 0}
 
 <!-- UNIDADES / LOCALIZAÇÃO -->
 <section id="unidades"><div class="wrap">
-  <div class="head"><div class="eyebrow">Onde estamos</div><h2>Nossas unidades</h2></div>
+  <div class="head"><h2>Nossas unidades</h2></div>
   <div class="grid g2">
     <div class="loc-card">
       <h3>Unidade Taboão</h3>
-      <p class="lbl">Endereço</p><p>Av. José Maciel, 501 · Jardim Maria Rosa · Taboão da Serra/SP</p>
-      <p class="lbl" style="margin-top:12px">Horário</p><p>Seg a Sex 9h–20h · Sábado 9h–19h</p>
+      <p class="lbl">Endereço</p><p>Av. José Maciel, 501, Jardim Maria Rosa · Taboão da Serra/SP</p>
+      <p class="lbl" style="margin-top:12px">Horário</p><p>Seg a Sex 9h-20h · Sábado 9h-19h</p>
       <a href="#agenda" class="btn btn-gold">Agendar Taboão</a>
     </div>
     <div class="loc-card">
       <h3>Unidade Pirajussara</h3>
-      <p class="lbl">Endereço</p><p>Rua Heitor Vila Lobos, 650 · Jardim Castilho · Embu das Artes/SP</p>
-      <p class="lbl" style="margin-top:12px">Horário</p><p>Seg a Sex 9h–20h20 · Sábado 9h–19h20</p>
+      <p class="lbl">Endereço</p><p>Rua Heitor Vila Lobos, 650, Jardim Castilho · Embu das Artes/SP</p>
+      <p class="lbl" style="margin-top:12px">Horário</p><p>Seg a Sex 9h-20h20 · Sábado 9h-19h20</p>
       <a href="#agenda" class="btn btn-gold">Agendar Pirajussara</a>
     </div>
   </div>
@@ -263,13 +284,12 @@ section{padding:88px 0}
 <!-- AGENDAMENTO -->
 <section id="agenda" class="agenda"><div class="wrap">
   <div>
-    <div class="eyebrow">Agendamento</div>
     <h2 style="font-family:'Bebas Neue';font-size:48px;text-transform:none;letter-spacing:1px;margin-bottom:16px">Bora marcar seu horário?</h2>
     <p style="color:var(--smoke)">Escolhe a unidade, o serviço e o melhor dia. A gente confirma pelo WhatsApp na hora. Assinante tem prioridade na agenda.</p>
-    <p style="margin-top:20px;font-size:15px">
-      <span class="gold">📍</span> 3 unidades · Taboão &amp; Pirajussara<br>
-      <span class="gold">🕐</span> Seg a Sáb · a partir das 9h<br>
-      <span class="gold">📱</span> WhatsApp: (11) 90000-0000
+    <p class="contact-list" style="margin-top:22px;font-size:15px">
+      <span><svg class="icn" viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 0 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>3 unidades em Taboão e Pirajussara</span>
+      <span><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>Seg a Sáb, a partir das 9h</span>
+      <span><svg class="icn" viewBox="0 0 24 24"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 4.5 6a2 2 0 0 1 2-2z"/></svg>WhatsApp (11) 90000-0000</span>
     </p>
   </div>
   <form class="form" onsubmit="return false">
@@ -289,7 +309,7 @@ section{padding:88px 0}
   <div><div class="logo" style="color:#fff">ESTILO <b>R</b><small>barbearia por assinatura</small></div><p style="margin-top:14px;max-width:320px">Barbearia de shopping para o homem exigente. Corte, barba e química com padrão profissional em Taboão e Pirajussara.</p></div>
   <div><h4>Unidades</h4><p>Taboão da Serra/SP<br>Embu das Artes/SP<br>São Paulo · Brasil</p></div>
   <div><h4>Siga</h4><p><a href="#">Instagram @estilor</a><br><a href="#">Facebook</a><br><a href="#">WhatsApp</a></p></div>
-</div><div class="wrap" style="margin-top:34px;opacity:.55;font-size:12px">© 2026 Estilo R — conteúdo fictício criado como demonstração no Kria Web.</div></footer>
+</div><div class="wrap" style="margin-top:34px;opacity:.55;font-size:12px">© 2026 Estilo R. Conteúdo fictício criado como demonstração no Kria Web.</div></footer>
 
 <script>
 // menu mobile
