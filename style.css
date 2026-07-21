@@ -2215,6 +2215,38 @@ body.dark-mode .footer {
     filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.25));
     transform-origin: bottom center;
     will-change: transform;
+    position: relative;
+    z-index: 2;
+}
+
+/* Asas que abrem quando o pato cai/planando */
+.mascot-wing {
+    position: absolute;
+    top: 18px;
+    width: 22px;
+    height: 30px;
+    background: linear-gradient(180deg, #fff7ed 0%, #fed7aa 100%);
+    border: 1.5px solid rgba(180, 83, 9, 0.35);
+    border-radius: 50% 50% 60% 40%;
+    opacity: 0;
+    z-index: 1;
+    will-change: transform, opacity;
+    pointer-events: none;
+}
+
+.mascot-wing-left {
+    left: -6px;
+    transform-origin: top right;
+}
+
+.mascot-wing-right {
+    right: -6px;
+    transform-origin: top left;
+}
+
+body.dark-mode .mascot-wing {
+    background: linear-gradient(180deg, #dbeafe 0%, #93c5fd 100%);
+    border-color: rgba(37, 99, 235, 0.4);
 }
 
 /* Sombra sob o pato — encolhe/estica conforme pula */
