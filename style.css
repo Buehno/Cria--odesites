@@ -2186,13 +2186,13 @@ body.dark-mode .footer {
 @media(max-width:900px){.kw-gallery-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.kw-gallery-grid{grid-template-columns:1fr}}
 
-/* Mascote Monstrinho Animado — posição controlada por JS (translate3d) */
+/* Pet Pato — posição controlada por JS (translate3d), empoleira nas letras/cards */
 .mascot {
     position: fixed;
     left: 0;
     top: 0;
-    width: 80px;
-    height: 80px;
+    width: 52px;
+    height: 52px;
     z-index: 900;
     pointer-events: none;
     will-change: transform;
@@ -2200,70 +2200,74 @@ body.dark-mode .footer {
 
 .mascot-body {
     position: relative;
-    width: 80px;
-    height: 80px;
+    width: 52px;
+    height: 52px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
-    transform-origin: center;
+    transform-origin: bottom center;
+    will-change: transform;
 }
 
-.mascot-head {
-    font-size: 60px;
+.mascot-duck {
+    font-size: 40px;
     line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
-    transform-origin: center;
-    transition: font-size 0.2s ease;
+    filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.25));
+    transform-origin: bottom center;
+    will-change: transform;
 }
 
-.mascot-arm {
+/* Sombra sob o pato — encolhe/estica conforme pula */
+.mascot-shadow {
     position: absolute;
-    width: 20px;
-    height: 12px;
-    background: linear-gradient(90deg, var(--accent-gold) 0%, var(--accent-gold-hover) 100%);
-    border-radius: 10px;
-    transform-origin: center;
-    opacity: 0.8;
+    bottom: -2px;
+    left: 50%;
+    width: 32px;
+    height: 8px;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.28) 0%, transparent 70%);
+    border-radius: 50%;
+    will-change: transform, opacity;
+    pointer-events: none;
 }
 
-.mascot-arm-left {
-    left: -15px;
-    top: 20px;
-}
-
-.mascot-arm-right {
-    right: -15px;
-    top: 35px;
-}
-
-.mascot-pointer {
+/* Balãozinho de fala do pato */
+.mascot-bubble {
     position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-top: 12px solid var(--accent-gold);
-    bottom: -20px;
+    bottom: 46px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    transform-origin: bottom center;
+    background: var(--accent-gold);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 12px;
+    opacity: 0;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    pointer-events: none;
+}
+
+.mascot-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
     left: 50%;
     transform: translateX(-50%);
-    opacity: 0;
-    scale: 0;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--accent-gold);
 }
 
-@keyframes mascot-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+.mascot-bubble.show {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
 }
 
-@keyframes mascot-point {
-    0%, 100% { transform: translateX(-50%) rotateZ(0deg); }
-    50% { transform: translateX(-50%) rotateZ(-10deg); }
-}
-
-body.dark-mode .mascot-arm {
-    background: linear-gradient(90deg, var(--accent-gold) 0%, var(--accent-secondary) 100%);
+@media (prefers-reduced-motion: reduce) {
+    .mascot { display: none; }
 }
