@@ -2186,14 +2186,16 @@ body.dark-mode .footer {
 @media(max-width:900px){.kw-gallery-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.kw-gallery-grid{grid-template-columns:1fr}}
 
-/* Mascote Monstrinho Animado */
+/* Mascote Monstrinho Animado — posição controlada por JS (translate3d) */
 .mascot {
     position: fixed;
-    left: 40px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 500;
+    left: 0;
+    top: 0;
+    width: 80px;
+    height: 80px;
+    z-index: 900;
     pointer-events: none;
+    will-change: transform;
 }
 
 .mascot-body {
@@ -2203,6 +2205,7 @@ body.dark-mode .footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    transform-origin: center;
 }
 
 .mascot-head {
@@ -2211,8 +2214,9 @@ body.dark-mode .footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-    animation: mascot-bounce 3s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+    transform-origin: center;
+    transition: font-size 0.2s ease;
 }
 
 .mascot-arm {

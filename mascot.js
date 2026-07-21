@@ -1,5 +1,6 @@
 /*!
- * mascot.js — Monstrinho INTERATIVO: segue mouse, reage, brinca, segura no form
+ * mascot.js — Monstrinho INTERATIVO: segue mouse com lerp, foge, aponta, segura no form
+ * Loop rAF único controla posição via transform (sem GSAP brigando pelo top/left).
  */
 (function () {
   'use strict';
@@ -11,290 +12,203 @@
   }
 
   function initMascot() {
+    var mascot = document.getElementById('mascot');
+    if (!mascot) return;
+
     var gsap = window.gsap;
     var ScrollTrigger = window.ScrollTrigger;
-    if (!gsap || !ScrollTrigger) return;
 
-    gsap.registerPlugin(ScrollTrigger);
-
-    var mascot = document.getElementById('mascot');
     var mascotBody = mascot.querySelector('.mascot-body');
     var mascotHead = mascot.querySelector('.mascot-head');
     var mascotPointer = mascot.querySelector('.mascot-pointer');
     var mascotArmLeft = mascot.querySelector('.mascot-arm-left');
     var mascotArmRight = mascot.querySelector('.mascot-arm-right');
 
-    var mouseX = 0, mouseY = 0;
-    var mascotX = 40, mascotY = window.innerHeight / 2;
-    var isChasing = false;
-    var isFleeing = false;
-    var lastMascotY = mascotY;
+    var reduced = false;
+    try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
 
-    // Real-time mouse tracking
+    // Mouse alvo
+    var mouseX = window.innerWidth / 2;
+    var mouseY = window.innerHeight / 2;
+    var hasMouse = false;
+
+    // Posição atual do mascote (canto do elemento)
+    var posX = 60;
+    var posY = window.innerHeight / 2;
+
+    // Modo comportamento
+    var MODE = { FOLLOW: 'follow', FLEE: 'flee', GRAB: 'grab' };
+    var mode = MODE.FOLLOW;
+
+    var OFFSET = 70;   // distância que o mascote mantém do cursor ao seguir
+    var FLEE_DIST = 130; // se cursor mais perto que isso, foge
+    var SIZE = 80;
+
     document.addEventListener('mousemove', function (e) {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      hasMouse = true;
+    });
 
-      // Mascote segue mouse com delay
-      var dist = Math.sqrt(Math.pow(mouseX - mascotX, 2) + Math.pow(mouseY - mascotY, 2));
+    document.addEventListener('mouseleave', function () { hasMouse = false; });
 
-      // Se mouse muito perto (<150px), mascote foge
-      if (dist < 150) {
-        mascotFlee(e);
-      } else {
-        mascotChase(e);
+    window.addEventListener('resize', function () {
+      posX = Math.min(posX, window.innerWidth - SIZE);
+      posY = Math.min(posY, window.innerHeight - SIZE);
+    });
+
+    // ---- Loop principal ----
+    var idleT = 0;
+    function tick() {
+      idleT += 0.03;
+
+      // centro atual do mascote
+      var cx = posX + SIZE / 2;
+      var cy = posY + SIZE / 2;
+
+      var dx = mouseX - cx;
+      var dy = mouseY - cy;
+      var dist = Math.sqrt(dx * dx + dy * dy) || 0.001;
+
+      var targetX = posX;
+      var targetY = posY;
+      var lerp = 0.08;
+
+      if (mode === MODE.GRAB) {
+        // Gruda perto do cursor
+        targetX = mouseX - SIZE / 2;
+        targetY = mouseY - SIZE / 2;
+        lerp = 0.25;
+      } else if (hasMouse && dist < FLEE_DIST) {
+        // Foge: move no sentido oposto ao cursor
+        mode = MODE.FLEE;
+        var fx = cx - (dx / dist) * (FLEE_DIST + 40);
+        var fy = cy - (dy / dist) * (FLEE_DIST + 40);
+        targetX = fx - SIZE / 2;
+        targetY = fy - SIZE / 2;
+        lerp = 0.18;
+      } else if (hasMouse) {
+        // Segue mantendo distância OFFSET do cursor
+        mode = MODE.FOLLOW;
+        var stopAt = OFFSET;
+        var followX = mouseX - (dx / dist) * stopAt;
+        var followY = mouseY - (dy / dist) * stopAt;
+        targetX = followX - SIZE / 2;
+        targetY = followY - SIZE / 2;
+        lerp = 0.06;
       }
 
-      // Mascote olha para o mouse
-      mascotLookAtMouse(e);
-    });
+      // Clamp na tela
+      targetX = Math.max(8, Math.min(window.innerWidth - SIZE - 8, targetX));
+      targetY = Math.max(80, Math.min(window.innerHeight - SIZE - 8, targetY));
 
-    function mascotChase(e) {
-      var angle = Math.atan2(e.clientY - mascotY, e.clientX - mascotX);
-      var targetX = mascotX + Math.cos(angle) * 3;
-      var targetY = mascotY + Math.sin(angle) * 2;
+      posX += (targetX - posX) * lerp;
+      posY += (targetY - posY) * lerp;
 
-      gsap.to(mascot, {
-        left: targetX,
-        top: targetY,
-        duration: 0.5,
-        overwrite: 'auto'
-      });
+      // Flutuação idle vertical
+      var floatY = reduced ? 0 : Math.sin(idleT) * 6;
 
-      mascotX = targetX;
-      mascotY = targetY;
-      isChasing = true;
-      isFleeing = false;
-    }
+      // Squash quando fugindo
+      var scaleY = mode === MODE.FLEE ? 0.85 : 1;
+      var scale = mode === MODE.GRAB ? 1.35 : 1;
 
-    function mascotFlee(e) {
-      // Mascote foge para longe
-      var angle = Math.atan2(e.clientY - mascotY, e.clientX - mascotX);
-      var fleeX = mascotX - Math.cos(angle) * 60;
-      var fleeY = mascotY - Math.sin(angle) * 60;
+      mascot.style.transform =
+        'translate3d(' + posX.toFixed(1) + 'px,' + (posY + floatY).toFixed(1) + 'px,0) scale(' + scale + ')';
 
-      // Limita aos limites da tela
-      fleeX = Math.max(20, Math.min(window.innerWidth - 100, fleeX));
-      fleeY = Math.max(100, Math.min(window.innerHeight - 100, fleeY));
-
-      gsap.to(mascot, {
-        left: fleeX,
-        top: fleeY,
-        duration: 0.3,
-        ease: 'back.out',
-        overwrite: 'auto'
-      });
-
-      mascotX = fleeX;
-      mascotY = fleeY;
-      isFleeing = true;
-      isChasing = false;
-
-      // Mascote salta assustado
-      gsap.to(mascotBody, {
-        scaleY: 0.8,
-        duration: 0.1,
-        yoyo: true,
-        repeat: 1,
-        ease: 'power2.inOut'
-      });
-    }
-
-    function mascotLookAtMouse(e) {
-      var mascotRect = mascot.getBoundingClientRect();
-      var mascotCenterX = mascotRect.left + mascotRect.width / 2;
-      var mascotCenterY = mascotRect.top + mascotRect.height / 2;
-
-      var angle = Math.atan2(e.clientY - mascotCenterY, e.clientX - mascotCenterX);
-      gsap.to(mascotHead, {
-        rotateZ: angle * (180 / Math.PI),
-        duration: 0.2,
-        overwrite: 'auto'
-      });
-    }
-
-    // Scroll tracking
-    ScrollTrigger.create({
-      trigger: 'body',
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: 0.5,
-      onUpdate: function (self) {
-        var scrollPercent = self.progress;
-        var scrollMax = document.documentElement.scrollHeight - window.innerHeight;
-        var targetScrollY = scrollPercent * scrollMax;
-
-        gsap.to(mascot, {
-          top: window.innerHeight / 2 + targetScrollY,
-          duration: 0,
-          overwrite: 'auto'
-        });
-
-        mascotY = window.innerHeight / 2 + targetScrollY;
+      // Cabeça olha pro cursor (inclina)
+      if (mascotHead) {
+        var lookAngle = Math.atan2(dy, dx) * (180 / Math.PI);
+        // limita inclinação pra não virar de cabeça pra baixo
+        var tilt = Math.max(-25, Math.min(25, lookAngle * 0.25));
+        mascotHead.style.transform = 'rotate(' + tilt.toFixed(1) + 'deg) scaleY(' + scaleY + ')';
       }
-    });
 
-    // Idle animations (floating + arm swinging)
-    gsap.to(mascotHead, {
-      y: '+=8',
-      duration: 2.5,
-      yoyo: true,
-      repeat: -1,
-      ease: 'sine.inOut'
-    });
-
-    // Arm animations - alcançando para o mouse
-    gsap.to(mascotArmLeft, {
-      rotateZ: 60,
-      duration: 1.2,
-      yoyo: true,
-      repeat: -1,
-      ease: 'sine.inOut'
-    });
-
-    gsap.to(mascotArmRight, {
-      rotateZ: -60,
-      duration: 1.2,
-      yoyo: true,
-      repeat: -1,
-      ease: 'sine.inOut',
-      delay: 0.3
-    });
-
-    // Mascote aponta para seções importantes
-    var pointTargets = [
-      '.hero-title',
-      '.kw-gallery-title',
-      '.kw-tpl-card',
-      '.plans-grid',
-      '.wizard-section'
-    ];
-
-    pointTargets.forEach(function (selector) {
-      var el = document.querySelector(selector);
-      if (!el) return;
-
-      ScrollTrigger.create({
-        trigger: el,
-        start: 'top center',
-        end: 'bottom center',
-        onEnter: function () {
-          gsap.to(mascotPointer, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.3,
-            ease: 'back.out'
-          });
-        },
-        onLeave: function () {
-          gsap.to(mascotPointer, {
-            opacity: 0,
-            scale: 0,
-            duration: 0.3
-          });
-        }
-      });
-    });
-
-    // FORM: Mascote segura o mouse e não deixa sair
-    var wizardForm = document.querySelector('.wizard-section');
-    if (wizardForm) {
-      ScrollTrigger.create({
-        trigger: wizardForm,
-        start: 'top center',
-        onEnter: function () {
-          // Mascote fica GRANDE e segura mouse
-          gsap.to(mascot, {
-            scale: 1.4,
-            left: '50%',
-            xPercent: -50,
-            duration: 0.6,
-            ease: 'back.out'
-          });
-
-          gsap.to(mascotHead, {
-            rotation: 360,
-            duration: 0.8,
-            ease: 'power1.inOut'
-          });
-
-          // Mascote "abraça" o mouse
-          mascotGrabsMouse();
-        }
-      });
-    }
-
-    function mascotGrabsMouse() {
-      // Mascote tenta seguir o mouse no form
-      var grabbing = setInterval(function () {
-        if (!wizardForm.classList.contains('active-step')) return;
-
-        var distToMouse = Math.sqrt(
-          Math.pow(mouseX - mascotX, 2) +
-          Math.pow(mouseY - mascotY, 2)
-        );
-
-        if (distToMouse > 400) {
-          gsap.to(mascot, {
-            left: mouseX - 40,
-            top: mouseY - 40,
-            duration: 0.4,
-            overwrite: 'auto'
-          });
-
-          // Braços tentam abraçar
-          gsap.to(mascotArmLeft, {
-            rotateZ: -45,
-            duration: 0.3
-          });
-          gsap.to(mascotArmRight, {
-            rotateZ: 45,
-            duration: 0.3
-          });
-        }
-      }, 300);
-    }
-
-    // Mouse hover em buttons = mascote reage
-    document.addEventListener('mouseover', function (e) {
-      if (e.target.classList.contains('btn') || e.target.classList.contains('btn-gold')) {
-        gsap.to(mascotHead, {
-          scale: 1.2,
-          duration: 0.2
-        });
-        gsap.to(mascotPointer, {
-          opacity: 0.8,
-          scale: 0.8,
-          duration: 0.2
-        });
+      // Braços "alcançam" o cursor
+      if (mascotArmLeft && mascotArmRight) {
+        var reach = mode === MODE.GRAB ? 50 : (mode === MODE.FLEE ? -40 : 25 + Math.sin(idleT * 2) * 15);
+        mascotArmLeft.style.transform = 'rotate(' + reach.toFixed(1) + 'deg)';
+        mascotArmRight.style.transform = 'rotate(' + (-reach).toFixed(1) + 'deg)';
       }
-    });
 
-    document.addEventListener('mouseout', function (e) {
-      if (e.target.classList.contains('btn') || e.target.classList.contains('btn-gold')) {
-        gsap.to(mascotHead, {
-          scale: 1,
-          duration: 0.2
-        });
-      }
-    });
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
 
-    // Click = mascote comemora
-    document.addEventListener('click', function (e) {
-      if (e.target.classList.contains('btn') || e.target.classList.contains('btn-gold')) {
-        gsap.to(mascotBody, {
-          rotation: 360,
-          scale: 1.3,
-          duration: 0.4,
-          ease: 'back.out',
-          onComplete: function () {
-            gsap.to(mascotBody, {
-              rotation: 0,
-              scale: 1,
-              duration: 0.3
-            });
+    // ---- Ponteiro aponta seções importantes (via scroll) ----
+    if (gsap && ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      var pointTargets = ['.hero-title', '.kw-gallery-title', '.plans-grid', '.wizard-section', '.contact-section'];
+      pointTargets.forEach(function (selector) {
+        var el = document.querySelector(selector);
+        if (!el) return;
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 70%',
+          end: 'bottom 30%',
+          onToggle: function (self) {
+            if (mascotPointer) {
+              mascotPointer.style.opacity = self.isActive ? '1' : '0';
+              mascotPointer.style.transform = 'translateX(-50%) scale(' + (self.isActive ? 1 : 0) + ')';
+            }
           }
         });
+      });
+
+      // ---- No form: mascote entra em modo GRAB ----
+      var wizardForm = document.querySelector('.wizard-section');
+      if (wizardForm) {
+        ScrollTrigger.create({
+          trigger: wizardForm,
+          start: 'top center',
+          end: 'bottom center',
+          onToggle: function (self) {
+            mode = self.isActive ? MODE.GRAB : MODE.FOLLOW;
+          }
+        });
+      }
+    } else {
+      // Fallback sem GSAP: ativa GRAB perto do form via scroll nativo
+      var wf = document.querySelector('.wizard-section');
+      if (wf) {
+        window.addEventListener('scroll', function () {
+          var r = wf.getBoundingClientRect();
+          var inView = r.top < window.innerHeight * 0.6 && r.bottom > window.innerHeight * 0.4;
+          mode = inView ? MODE.GRAB : MODE.FOLLOW;
+        }, { passive: true });
+      }
+    }
+
+    // ---- Reações a hover/click em botões ----
+    document.addEventListener('mouseover', function (e) {
+      if (e.target.closest && e.target.closest('.btn')) {
+        if (mascotPointer) {
+          mascotPointer.style.opacity = '1';
+          mascotPointer.style.transform = 'translateX(-50%) scale(1)';
+        }
+        if (mascotHead) mascotHead.style.fontSize = '68px';
+      }
+    });
+    document.addEventListener('mouseout', function (e) {
+      if (e.target.closest && e.target.closest('.btn')) {
+        if (mascotHead) mascotHead.style.fontSize = '';
+      }
+    });
+
+    // Click comemora (bounce)
+    document.addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('.btn')) {
+        if (!mascotBody) return;
+        var start = performance.now();
+        function celebrate(now) {
+          var t = (now - start) / 500;
+          if (t >= 1) { mascotBody.style.transform = ''; return; }
+          var rot = t * 360;
+          var sc = 1 + Math.sin(t * Math.PI) * 0.3;
+          mascotBody.style.transform = 'rotate(' + rot + 'deg) scale(' + sc + ')';
+          requestAnimationFrame(celebrate);
+        }
+        requestAnimationFrame(celebrate);
       }
     });
   }
