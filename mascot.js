@@ -1,9 +1,13 @@
 /*!
- * mascot.js — Pet Pato 🦆 travesso.
- * Pula e pousa nas letras/títulos/cards. Ao cair ABRE AS ASAS e plana.
- * Entorta os cards com o peso, ROUBA botões (pega, carrega e devolve), fala imperativo.
- * Posição via translate3d. Entorta via propriedade CSS `rotate`, carrega via `translate`
- * (independentes de `transform`, então NÃO brigam com o GSAP das outras animações).
+ * mascot.js — Pet Pato 🦆 animado por partes (SVG rigado).
+ *
+ * Animação: ciclo de passada com pernas alternadas + head-bob de ave, agachamento
+ * (antecipação) antes do pulo, esticada no ar com asas batendo, squash + mola no
+ * pouso, piscadas, bicadas e balanço de cauda.
+ *
+ * Travessuras: entorta cards ao pousar (propriedade CSS `rotate`) e rouba botões
+ * (propriedade CSS `translate`) — ambas independentes de `transform`, então NÃO
+ * conflitam com as animações GSAP do resto do site.
  */
 (function () {
   'use strict';
@@ -22,14 +26,24 @@
     var mascot = document.getElementById('mascot');
     if (!mascot) return;
 
-    var body = mascot.querySelector('.mascot-body');
-    var duck = mascot.querySelector('.mascot-duck');
+    var bodyEl = mascot.querySelector('.mascot-body');
     var shadow = mascot.querySelector('.mascot-shadow');
-    var wingL = mascot.querySelector('.mascot-wing-left');
-    var wingR = mascot.querySelector('.mascot-wing-right');
     var bubble = document.getElementById('mascot-bubble');
 
-    var W = 52, H = 52, DUCK_FOOT = 8;
+    // partes do pato
+    var $all = document.getElementById('dk-all');
+    var $head = document.getElementById('dk-head');
+    var $eyelid = document.getElementById('dk-eyelid');
+    var $wingN = document.getElementById('dk-wing-near');
+    var $wingF = document.getElementById('dk-wing-far');
+    var $legB = document.getElementById('dk-leg-b');
+    var $legF = document.getElementById('dk-leg-f');
+    var $tail = document.getElementById('dk-tail');
+
+    function setT(el, t) { if (el) el.setAttribute('transform', t); }
+
+    // caixa 56px; no viewBox 64 os pés ficam em y=62 → 62/64*56 ≈ 54.2px
+    var W = 56, H = 56, FEET = 54;
 
     var PERCH_SELECTORS = [
       '.hero-title', '.hero-description', '.badge-tech',
@@ -40,25 +54,28 @@
       '.contact-title', '.channel-value', '.footer-logo'
     ];
 
-    var quotes = ['LÊ AQUI!', 'CLICA JÁ! 🚀', 'OLHA ISSO!', 'VEM CÁ!', 'PEGUEI! 🦆',
-                  'TOMA DE VOLTA!', 'QUÁ QUÁ!', 'CONFIA! ✨'];
+    var quotes = ['LÊ AQUI!', 'CLICA JÁ! 🚀', 'OLHA ISSO!', 'VEM CÁ!',
+                  'QUÁ QUÁ!', 'CONFIA! ✨', 'PRESTA ATENÇÃO!'];
 
-    var STATE = { SIT: 'sit', HOP: 'hop' };
-    var state = STATE.SIT;
+    var S = { SIT: 'sit', PREP: 'prep', HOP: 'hop', LAND: 'land' };
+    var state = S.SIT;
 
     var perch = null;
     var walk = 0, walkDir = 1, facing = 1;
     var x = 60, y = window.innerHeight / 2;
 
-    var hop = null;
+    var hop = null, prep = null, land = null;
+    var queued = null;                   // { el, steal } aguardando o agachamento
     var nextHopAt = performance.now() + rand(900, 1600);
     var pendingTarget = null;
-    var lastPeck = 0;
     var hopsSinceSteal = 0;
 
-    // roubo de botão em andamento
-    var carrying = null;   // { el, cx0, cy0, until }
-    var tiltedCard = null; // card atualmente entortado
+    var carrying = null, tiltedCard = null;
+
+    // relógios de animação
+    var walkPhase = 0;                   // ciclo de passada
+    var blinkAt = performance.now() + rand(1200, 3000), blinkUntil = 0;
+    var peckUntil = 0, nextPeckAt = performance.now() + rand(2500, 5000);
 
     function rand(a, b) { return a + Math.random() * (b - a); }
     function rectOf(el) { var r = el.getBoundingClientRect(); return (r.width < 24 || r.height < 8) ? null : r; }
@@ -68,29 +85,21 @@
       var r = rectOf(el);
       if (!r) return null;
       var maxWalk = Math.max(0, r.width - W);
-      var wx = Math.min(walkOffset, maxWalk);
-      return { x: r.left + wx, y: r.top - H + DUCK_FOOT, width: r.width, maxWalk: maxWalk };
+      return { x: r.left + Math.min(walkOffset, maxWalk), y: r.top - FEET, maxWalk: maxWalk };
     }
 
     function collectPerches() {
       var out = [];
       for (var i = 0; i < PERCH_SELECTORS.length; i++) {
         var els = document.querySelectorAll(PERCH_SELECTORS[i]);
-        for (var j = 0; j < els.length; j++) {
-          var r = rectOf(els[j]);
-          if (isVisible(r)) out.push(els[j]);
-        }
+        for (var j = 0; j < els.length; j++) if (isVisible(rectOf(els[j]))) out.push(els[j]);
       }
       return out;
     }
 
     function visibleButtons() {
-      var out = [];
-      var els = document.querySelectorAll('.btn');
-      for (var i = 0; i < els.length; i++) {
-        var r = rectOf(els[i]);
-        if (isVisible(r)) out.push(els[i]);
-      }
+      var out = [], els = document.querySelectorAll('.btn');
+      for (var i = 0; i < els.length; i++) if (isVisible(rectOf(els[i]))) out.push(els[i]);
       return out;
     }
 
@@ -104,24 +113,32 @@
       return scored.length ? scored[0].el : null;
     }
 
-    function startHop(targetEl, opts) {
-      if (!targetEl) return;
-      var tr = rectOf(targetEl);
-      if (!tr) return;
+    // agacha antes de saltar (antecipação)
+    function requestHop(targetEl, steal) {
+      if (!targetEl || !rectOf(targetEl)) return;
+      queued = { el: targetEl, steal: !!steal };
+      prep = { t: 0, dur: 0.18 };
+      state = S.PREP;
+    }
+
+    function launch() {
+      var target = queued.el, steal = queued.steal;
+      queued = null;
+      var tr = rectOf(target);
+      if (!tr) { state = S.SIT; nextHopAt = performance.now() + 600; return; }
       var maxWalk = Math.max(0, tr.width - W);
       var targetWalk = rand(0, maxWalk);
-      var dest = perchPoint(targetEl, targetWalk);
-      if (!dest) return;
+      var dest = perchPoint(target, targetWalk);
+      if (!dest) { state = S.SIT; nextHopAt = performance.now() + 600; return; }
       var dist = Math.hypot(dest.x - x, dest.y - y);
       hop = {
         x0: x, y0: y, x1: dest.x, y1: dest.y,
-        arc: Math.max(70, dist * 0.5),
-        dur: Math.max(0.5, Math.min(1.15, dist / 650)),
-        t: 0, targetPerch: targetEl, targetWalk: targetWalk,
-        steal: !!(opts && opts.steal)
+        arc: Math.max(75, dist * 0.5),
+        dur: Math.max(0.5, Math.min(1.15, dist / 640)),
+        t: 0, target: target, targetWalk: targetWalk, steal: steal
       };
       facing = (dest.x >= x) ? 1 : -1;
-      state = STATE.HOP;
+      state = S.HOP;
     }
 
     function speak(txt) {
@@ -132,7 +149,6 @@
       bubble._t = setTimeout(function () { bubble.classList.remove('show'); }, 1400);
     }
 
-    // entorta o card sob o pato (usa propriedade `rotate`, não conflita com GSAP)
     function tiltCardUnder(el, angle) {
       var card = el.closest ? el.closest('.kw-tpl-card, .plan-card') : null;
       if (tiltedCard && tiltedCard !== card) {
@@ -143,9 +159,7 @@
         card.style.transition = 'rotate 0.35s cubic-bezier(0.175,0.885,0.32,1.275)';
         card.style.rotate = angle.toFixed(1) + 'deg';
         tiltedCard = card;
-      } else {
-        tiltedCard = null;
-      }
+      } else tiltedCard = null;
     }
 
     function grabButton(btn) {
@@ -173,102 +187,181 @@
       var dt = Math.min(0.05, (now - lastNow) / 1000);
       lastNow = now;
 
-      var squashY = 1, squashX = 1, rot = 0, shadowScale = 1, shadowOp = 1;
-      var falling = false, flightK = 0;
+      // ---- valores de pose (default: parado) ----
+      var sx = 1, sy = 1;          // squash/stretch geral
+      var lean = 0;                // inclinação do corpo
+      var bobY = 0;                // sobe/desce do corpo
+      var legB = 0, legF = 0;      // ângulo das pernas
+      var headRot = 0, headX = 0, headY = 0;
+      var wingN = 8, wingF = 12;   // asas dobradas
+      var tailRot = 0;
+      var shScale = 1, shOp = 1;
+      var walking = false;
 
-      if (state === STATE.HOP && hop) {
+      if (state === S.PREP) {
+        prep.t += dt / prep.dur;
+        var k = Math.min(1, prep.t);
+        // agacha: comprime e dobra as pernas
+        sy = 1 - 0.22 * Math.sin(k * Math.PI * 0.5);
+        sx = 1 + 0.16 * Math.sin(k * Math.PI * 0.5);
+        legB = -18 * k; legF = 14 * k;
+        headY = 2 * k; headRot = -6 * k;
+        wingN = 8 + 14 * k; wingF = 12 + 14 * k;
+        tailRot = -8 * k;
+        if (prep.t >= 1) launch();
+
+      } else if (state === S.HOP && hop) {
         hop.t += dt / hop.dur;
         var t = hop.t;
         if (t >= 1) {
           x = hop.x1; y = hop.y1;
-          var landed = hop.targetPerch;
-          var wasSteal = hop.steal;
-          walk = hop.targetWalk;
-          perch = landed;
-          state = STATE.SIT;
-          squashY = 0.68; squashX = 1.32;      // impacto do pouso
-          // entorta card ao pousar
-          tiltCardUnder(landed, facing * rand(3, 6));
-          if (wasSteal) { grabButton(landed); nextHopAt = now + 500; hopsSinceSteal = 0; }
-          else { nextHopAt = now + rand(1300, 2900); }
+          perch = hop.target; walk = hop.targetWalk;
+          tiltCardUnder(hop.target, facing * rand(3, 6));
+          if (hop.steal) { grabButton(hop.target); nextHopAt = now + 600; hopsSinceSteal = 0; }
+          else nextHopAt = now + rand(1400, 3000);
+          land = { t: 0, dur: 0.34 };
+          state = S.LAND;
           hop = null;
         } else {
           var e = t;
           x = hop.x0 + (hop.x1 - hop.x0) * e;
-          var yLine = hop.y0 + (hop.y1 - hop.y0) * e;
-          y = yLine - Math.sin(Math.PI * e) * hop.arc;
-          falling = e > 0.42;                  // metade descendente = planando
-          flightK = Math.sin(Math.PI * e);     // 0..1..0
-          squashY = 1 + flightK * 0.16;
-          squashX = 1 - flightK * 0.10;
-          rot = facing * flightK * 10;
-          shadowScale = 0.5 + (1 - flightK) * 0.6;
-          shadowOp = 0.22 + (1 - flightK) * 0.55;
+          y = (hop.y0 + (hop.y1 - hop.y0) * e) - Math.sin(Math.PI * e) * hop.arc;
+
+          var air = Math.sin(Math.PI * e);      // 0..1..0
+          var rising = e < 0.45;
+          // estica na subida, prepara pernas pro pouso na descida
+          sy = 1 + air * 0.18; sx = 1 - air * 0.11;
+          lean = facing * (rising ? 14 : -8) * air;
+          legB = rising ? -42 * air : 18 * air;
+          legF = rising ? -30 * air : 30 * air;
+          headRot = facing * 8 * air;
+          headY = -1.5 * air;
+          tailRot = rising ? -18 * air : 12 * air;
+          // asas: abrem e batem — rápido na descida (planando)
+          var flapSpeed = rising ? 70 : 45;
+          var flap = Math.sin(now / flapSpeed);
+          var spread = rising ? 0.75 : 1;
+          wingN = -(28 + flap * 32) * spread;
+          wingF = -(34 + flap * 30) * spread;
+          shScale = 0.5 + (1 - air) * 0.6;
+          shOp = 0.2 + (1 - air) * 0.6;
         }
+
+      } else if (state === S.LAND) {
+        land.t += dt / land.dur;
+        var lk = Math.min(1, land.t);
+        // mola amortecida: esmaga e volta com overshoot
+        var damp = Math.exp(-5 * lk) * Math.cos(lk * Math.PI * 2.6);
+        sy = 1 - 0.3 * damp;
+        sx = 1 + 0.24 * damp;
+        legB = 26 * damp; legF = -22 * damp;
+        headY = 3 * damp; headRot = -10 * damp;
+        wingN = 8 - 40 * damp; wingF = 12 - 40 * damp;
+        tailRot = 16 * damp;
+        if (land.t >= 1) { state = S.SIT; land = null; }
+
       } else {
-        // SIT
+        // ---- SIT: parado ou andando pelo poleiro ----
         if (perch) {
           var vis = isVisible(perch.getBoundingClientRect());
           var p = perchPoint(perch, walk);
           if (!p || !vis) {
             if (tiltedCard) { tiltedCard.style.rotate = '0deg'; tiltedCard = null; }
             var np = pickPerch(perch);
-            if (np) startHop(np);
+            if (np) requestHop(np, false);
           } else {
-            walk += walkDir * 26 * dt;
+            var speed = 30;
+            walk += walkDir * speed * dt;
             if (walk >= p.maxWalk) { walk = p.maxWalk; walkDir = -1; facing = -1; }
             else if (walk <= 0) { walk = 0; walkDir = 1; facing = 1; }
             var p2 = perchPoint(perch, walk);
             if (p2) { x = p2.x; y = p2.y; }
-            squashY = 1 + Math.sin(now / 140) * 0.05;
-            if (now - lastPeck > rand(2200, 4200)) { lastPeck = now; rot = facing * 16; }
+
+            if (p.maxWalk > 4) {
+              walking = true;
+              walkPhase += dt * 7.5;
+              legB = Math.sin(walkPhase) * 26;
+              legF = Math.sin(walkPhase + Math.PI) * 26;
+              bobY = Math.abs(Math.sin(walkPhase)) * -1.6;      // sobe a cada passo
+              lean = facing * 5;
+              // head-bob de ave: cabeça avança e "espera" o corpo
+              headX = facing * (Math.sin(walkPhase) * 1.8);
+              headY = Math.abs(Math.cos(walkPhase)) * -0.8;
+              wingN = 8 + Math.sin(walkPhase) * 5;
+              wingF = 12 + Math.sin(walkPhase) * 4;
+              tailRot = Math.sin(walkPhase * 2) * 7;             // balança a cauda
+            } else {
+              // respiração parado
+              sy = 1 + Math.sin(now / 620) * 0.022;
+              sx = 1 - Math.sin(now / 620) * 0.016;
+              tailRot = Math.sin(now / 900) * 4;
+            }
           }
         } else {
           var first = pickPerch(null);
-          if (first) startHop(first);
+          if (first) requestHop(first, false);
         }
 
-        if (now >= nextHopAt && state === STATE.SIT) {
-          var target, steal = false;
+        if (now >= nextHopAt && state === S.SIT) {
+          var target = null, steal = false;
           if (pendingTarget) { target = pendingTarget; pendingTarget = null; }
-          else if (hopsSinceSteal >= 2 && Math.random() < 0.55) {
+          else if (hopsSinceSteal >= 2 && Math.random() < 0.5) {
             var btns = visibleButtons();
             if (btns.length) { target = btns[(Math.random() * btns.length) | 0]; steal = true; }
           }
           if (!target) target = pickPerch(perch);
           hopsSinceSteal++;
-          if (target) { startHop(target, { steal: steal }); if (!steal && Math.random() < 0.4) speak(); }
+          if (target) { requestHop(target, steal); if (!steal && Math.random() < 0.35) speak(); }
           else nextHopAt = now + 1200;
         }
       }
 
-      // carregar botão roubado: ele segue pendurado abaixo do pato
+      // ---- bicada (só parado/andando) ----
+      if (state === S.SIT && now > nextPeckAt) {
+        nextPeckAt = now + rand(2800, 6000);
+        peckUntil = now + 300;
+      }
+      if (now < peckUntil) {
+        var pk = 1 - (peckUntil - now) / 300;
+        headRot += Math.sin(pk * Math.PI) * 30;
+        headY += Math.sin(pk * Math.PI) * 3;
+      }
+
+      // ---- piscada ----
+      if (now > blinkAt) { blinkUntil = now + 120; blinkAt = now + rand(1800, 4500); }
+      var lidScale = now < blinkUntil ? 1 : 0;
+
+      // ---- botão roubado segue pendurado abaixo do pato ----
       if (carrying) {
-        var duckCX = x + W / 2, duckCY = y + H;
-        var dx = duckCX - carrying.cx0;
-        var dy = duckCY - carrying.cy0 + 26;
+        var dx = (x + W / 2) - carrying.cx0;
+        var dy = (y + FEET) - carrying.cy0 + 26;
         carrying.el.style.translate = dx.toFixed(1) + 'px ' + dy.toFixed(1) + 'px';
         carrying.el.style.rotate = (Math.sin(now / 110) * 10).toFixed(1) + 'deg';
         if (now > carrying.until) releaseButton();
       }
 
-      // asas: abrem e batem ao cair/planar
-      var wingSpread = falling ? 1 : (state === STATE.HOP ? 0.35 : 0);
-      var flap = falling ? Math.sin(now / 55) * 35 : Math.sin(now / 90) * 10;
-      if (wingL && wingR) {
-        wingL.style.opacity = wingSpread.toFixed(2);
-        wingR.style.opacity = wingSpread.toFixed(2);
-        wingL.style.transform = 'rotate(' + (30 + flap) + 'deg) scale(' + (0.6 + wingSpread * 0.5) + ')';
-        wingR.style.transform = 'rotate(' + (-30 - flap) + 'deg) scale(' + (0.6 + wingSpread * 0.5) + ')';
-      }
-
+      // ---- limites da viewport ----
       x = Math.max(4, Math.min(window.innerWidth - W - 4, x));
       y = Math.max(66, Math.min(window.innerHeight - H - 4, y));
 
+      // ---- render ----
       mascot.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
-      if (body) body.style.transform = 'scaleX(' + facing + ')';
-      if (duck) duck.style.transform = 'scale(' + squashX.toFixed(3) + ',' + squashY.toFixed(3) + ') rotate(' + rot.toFixed(1) + 'deg)';
-      if (shadow) { shadow.style.transform = 'translateX(-50%) scaleX(' + shadowScale.toFixed(2) + ')'; shadow.style.opacity = shadowOp.toFixed(2); }
+      if (bodyEl) bodyEl.style.transform = 'scaleX(' + facing + ')';
+
+      // squash/stretch + inclinação em torno dos pés (32,62 no viewBox)
+      setT($all, 'translate(0,' + bobY.toFixed(2) + ') translate(32,62) scale(' + sx.toFixed(3) + ',' + sy.toFixed(3) + ') rotate(' + lean.toFixed(1) + ') translate(-32,-62)');
+      setT($legB, 'rotate(' + legB.toFixed(1) + ',23,48)');
+      setT($legF, 'rotate(' + legF.toFixed(1) + ',32,48)');
+      setT($head, 'translate(' + headX.toFixed(2) + ',' + headY.toFixed(2) + ') rotate(' + headRot.toFixed(1) + ',38,31)');
+      setT($wingN, 'rotate(' + wingN.toFixed(1) + ',23,33)');
+      setT($wingF, 'rotate(' + wingF.toFixed(1) + ',22,33)');
+      setT($tail, 'rotate(' + tailRot.toFixed(1) + ',13,38)');
+      setT($eyelid, 'translate(47.5,21) scale(1,' + lidScale + ') translate(-47.5,-21)');
+
+      if (shadow) {
+        shadow.style.transform = 'translateX(-50%) scaleX(' + shScale.toFixed(2) + ')';
+        shadow.style.opacity = shOp.toFixed(2);
+      }
 
       requestAnimationFrame(frame);
     }
@@ -279,23 +372,22 @@
     document.addEventListener('mouseover', function (e) {
       var el = e.target.closest ? e.target.closest(hoverSel) : null;
       if (!el) return;
-      var perchInside = el.matches('.btn, .hero-title, .kw-gallery-title')
+      var inside = el.matches('.btn, .hero-title, .kw-gallery-title')
         ? el : (el.querySelector('.kw-tpl-name, .plan-price, .kw-tpl-badge') || el);
-      var r = rectOf(perchInside);
-      if (r && isVisible(r) && perch !== perchInside && state === STATE.SIT && !carrying) {
-        pendingTarget = perchInside;
+      if (isVisible(rectOf(inside)) && perch !== inside && state === S.SIT && !carrying) {
+        pendingTarget = inside;
         nextHopAt = performance.now();
       }
     });
 
-    // click em botão → pulinho + fala
+    // click em botão → pulinho no lugar + fala
     document.addEventListener('click', function (e) {
       var btn = e.target.closest ? e.target.closest('.btn') : null;
       if (!btn) return;
       speak('CLICA JÁ! 🚀');
-      if (state === STATE.SIT && perch && !carrying) {
-        hop = { x0: x, y0: y, x1: x, y1: y, arc: 55, dur: 0.4, t: 0, targetPerch: perch, targetWalk: walk };
-        state = STATE.HOP;
+      if (state === S.SIT && perch && !carrying) {
+        hop = { x0: x, y0: y, x1: x, y1: y, arc: 58, dur: 0.42, t: 0, target: perch, targetWalk: walk, steal: false };
+        state = S.HOP;
       }
     });
 

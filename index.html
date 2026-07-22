@@ -20,13 +20,41 @@
 </head>
 <body>
 
-    <!-- Pet Pato — pula, pousa, abre asas ao cair, entorta cards, rouba botões -->
+    <!-- Pet Pato — SVG com partes animadas: anda, pula, abre asas, entorta cards, rouba botões -->
     <div class="mascot" id="mascot" aria-hidden="true">
         <div class="mascot-shadow"></div>
         <div class="mascot-body">
-            <div class="mascot-wing mascot-wing-left"></div>
-            <div class="mascot-wing mascot-wing-right"></div>
-            <div class="mascot-duck">🦆</div>
+            <svg class="duck-svg" viewBox="0 0 64 64" width="56" height="56">
+                <g id="dk-all">
+                    <!-- asa de trás -->
+                    <ellipse id="dk-wing-far" cx="26" cy="38" rx="10" ry="7.5" fill="#E8A317"/>
+                    <!-- pernas -->
+                    <g id="dk-leg-b">
+                        <rect x="21.5" y="47" width="3" height="12" rx="1.5" fill="#F08A24"/>
+                        <path d="M17,58.5 L28,58.5 L27,62 L18.5,62 Z" fill="#FF9E2C"/>
+                    </g>
+                    <g id="dk-leg-f">
+                        <rect x="30.5" y="47" width="3" height="12" rx="1.5" fill="#FF9E2C"/>
+                        <path d="M26,58.5 L37,58.5 L36,62 L27.5,62 Z" fill="#FFB13D"/>
+                    </g>
+                    <!-- cauda -->
+                    <path id="dk-tail" d="M12,36 L0,30 L12,45 Z" fill="#F0BC33" stroke="#D99C1F" stroke-width="0.7" stroke-linejoin="round"/>
+                    <!-- corpo -->
+                    <ellipse id="dk-torso" cx="27" cy="40" rx="17" ry="12.5" fill="#FFD54A" stroke="#E3A81A" stroke-width="0.9"/>
+                    <!-- cabeça -->
+                    <g id="dk-head">
+                        <circle cx="45" cy="24" r="9.8" fill="#FFD54A" stroke="#E3A81A" stroke-width="0.9"/>
+                        <!-- bico chato de pato -->
+                        <path d="M51,22.2 Q63.5,22.4 63.5,26 Q63.5,29.6 51,29.2 Z" fill="#FF9E2C" stroke="#E07C12" stroke-width="0.7" stroke-linejoin="round"/>
+                        <path d="M53.5,26 Q59,26.4 62.6,26.2" stroke="#E07C12" stroke-width="0.6" fill="none" stroke-linecap="round"/>
+                        <circle cx="47.6" cy="20.6" r="2.3" fill="#3A2A10"/>
+                        <circle cx="48.4" cy="19.8" r="0.8" fill="#fff"/>
+                        <rect id="dk-eyelid" x="44.8" y="16.8" width="6" height="5" fill="#FFD54A"/>
+                    </g>
+                    <!-- asa da frente -->
+                    <ellipse id="dk-wing-near" cx="29" cy="38" rx="10.5" ry="8" fill="#FFE9A8" stroke="#E3A81A" stroke-width="0.8"/>
+                </g>
+            </svg>
         </div>
         <div class="mascot-bubble" id="mascot-bubble"></div>
     </div>
